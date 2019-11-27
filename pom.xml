@@ -11,6 +11,7 @@
         <module>ans-eureka-7001</module>
         <module>ans-eureka-7002</module>
         <module>ans-api</module>
+        <module>ans-basic-provider-8001</module>
     </modules>
 
     <packaging>pom</packaging>
