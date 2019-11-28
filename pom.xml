@@ -12,6 +12,8 @@
         <module>ans-eureka-7002</module>
         <module>ans-api</module>
         <module>ans-basic-provider-8001</module>
+        <module>ans-chat-provider-8002</module>
+        <module>ans-answer-provider-8003</module>
     </modules>
 
     <packaging>pom</packaging>

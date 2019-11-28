@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.provider.dao.UserDao">
+
+    <insert id="insertUser" parameterType="user">
+        INSERT INTO user (name, age, dbname) VALUES (#{name}, #{age}, DATABASE());
+    </insert>
+
+    <select id="getUserById" resultType="user" parameterType="int">
+        SELECT * FROM user WHERE id = #{id};
+    </select>
+
+    <select id="listAllUsers" resultType="user">
+        SELECT * FROM user;
+    </select>
+
+</mapper>

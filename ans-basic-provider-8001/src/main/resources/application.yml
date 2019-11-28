@@ -1,0 +1,33 @@
+server:
+  port: 8001
+
+# mybatis配置
+mybatis:
+  type-aliases-package: com.ecin520.api.entity
+  mapper-locations: classpath:mapper/*.xml
+
+# spring配置
+spring:
+  application:
+    name: basic-provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/springcloud_db1?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: qwer1234
+
+# Eureka配置，服务注册位置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id:
+      ans-basic-provider-8001
+
+# info服务信息配置
+info:
+  app.name: find ans
+  designer.name: ecin520
+  designer.school: jxnu
