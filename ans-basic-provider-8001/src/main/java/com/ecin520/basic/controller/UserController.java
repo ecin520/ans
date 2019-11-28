@@ -8,7 +8,6 @@ import com.ecin520.api.entity.User;
 import com.ecin520.basic.service.UserService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,16 +30,21 @@ public class UserController {
 		user.setPassword(password);
 		user.setNickname(RandomName.getRandomName().toString());
 		user.setAvatar_url(RandomAvatar.getRandomAvatar());
+		userService.insertUser(user);
 
-		return JsonObject.backStatus(200, "注册成功！");
+		try {
+			return JsonObject.backStatus(200, "注册成功！");
+		} catch (Exception e) {
+			return JsonObject.backStatus(500, username + "注册失败！");
+		}
 
 	}
 
 	/**
 	 * 注册失败的回调方法
 	 * */
-	public JSONObject insertUserFallBack(@RequestParam String username, @RequestParam String password) {
-		return JsonObject.backStatus(500, username + "注册失败！");
+	public JSONObject insertUserFallBack(@RequestParam("username") String username, @RequestParam("password") String password) {
+		return JsonObject.backStatus(500, username + "注册失败-熔断回调");
 	}
 
 	@RequestMapping("/listAllUsers")
@@ -51,7 +55,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/getUserByUsername")
-	public User getUserByUsername(@RequestParam String username) {
+	public User getUserByUsername(@RequestParam("username") String username) {
 		return userService.getUserByUsername(username);
 	}
 

@@ -14,7 +14,7 @@
         <module>ans-basic-provider-8001</module>
         <module>ans-chat-provider-8002</module>
         <module>ans-answer-provider-8003</module>
-        <module>ans-feign-client</module>
+        <module>ans-client</module>
     </modules>
 
     <packaging>pom</packaging>
