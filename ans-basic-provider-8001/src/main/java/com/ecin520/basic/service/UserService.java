@@ -1,6 +1,7 @@
 package com.ecin520.basic.service;
 
 import com.ecin520.api.entity.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

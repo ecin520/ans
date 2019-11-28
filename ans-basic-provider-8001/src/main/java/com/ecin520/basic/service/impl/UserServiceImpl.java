@@ -4,6 +4,7 @@ import com.ecin520.api.entity.User;
 import com.ecin520.basic.dao.UserDao;
 import com.ecin520.basic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author NICE
  * @Date: 2019/11/28 10:44
  */
+@Service
 public class UserServiceImpl implements UserService {
 
     @Autowired

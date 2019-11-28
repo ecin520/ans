@@ -1,4 +1,15 @@
 package com.ecin520.api.entity;
 
-public class Permission {
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * @author NICE
+ */
+@Data
+public class Permission implements Serializable {
+	private Integer id;
+	private String permissionName;
+	private String permissionDescribe;
 }
