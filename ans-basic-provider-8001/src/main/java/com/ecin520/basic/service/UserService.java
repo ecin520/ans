@@ -26,6 +26,13 @@ public interface UserService {
     User getUserById(Integer id);
 
     /**
+     * Querying user by username
+     * @param username user's id
+     * @return {user} when not null
+     * */
+    User getUserByUsername(String username);
+
+    /**
      * list all users
      * @return List<Users>
      * */

@@ -9,11 +9,15 @@
     </insert>
 
     <select id="getUserById" resultType="user" parameterType="int">
-        SELECT * FROM user WHERE id = #{id};
+        SELECT * FROM `user` WHERE `id` = #{id};
     </select>
 
     <select id="listAllUsers" resultType="user">
-        SELECT * FROM user;
+        SELECT * FROM `user`;
+    </select>
+
+    <select id="getUserByUsername" resultType="user">
+        SELECT * FROM `user` WHERE `username` = #{username};
     </select>
 
 </mapper>

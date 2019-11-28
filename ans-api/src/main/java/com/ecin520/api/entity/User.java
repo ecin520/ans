@@ -13,14 +13,14 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String nickname;
-    private String avatarUrl;
-    private String telNumber;
+    private String avatar_url;
+    private String tel_number;
     private String rank;
     private String sign;
     private Integer status;
-    private Integer ansNumber;
-    private Integer correctNumber;
-    private String goodAt;
-    private String registerTime;
+    private Integer ans_number;
+    private Integer correct_number;
+    private String good_at;
+    private String register_time;
 
 }
