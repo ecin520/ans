@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.basic.dao.RoleDao">
+    <insert id="insertRole" parameterType="Role">
+        INSERT `role` (`role_name`, `role_describe`) VALUES (#{role_name}, #{role_describe});
+    </insert>
+    <update id="updateRole" parameterType="Role">
+        UPDATE `role` SET `role_name` = #{role_name}, `role_describe` = #{role_describe} WHERE `id` = #{id};
+    </update>
+    <select id="getRoleById" parameterType="Integer" resultType="Role">
+        SELECT * FROM `role` WHERE `id` = #{id};
+    </select>
+    <delete id="deleteRoleById" parameterType="Integer">
+        DELETE FROM `role` WHERE `id` = #{id};
+    </delete>
+</mapper>

@@ -10,6 +10,6 @@ import java.io.Serializable;
 @Data
 public class Role implements Serializable {
 	private Integer id;
-	private String roleName;
-	private String roleDescribe;
+	private String role_name;
+	private String role_describe;
 }

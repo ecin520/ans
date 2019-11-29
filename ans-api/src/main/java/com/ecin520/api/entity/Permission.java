@@ -5,11 +5,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author NICE
+ * @Author ecin520
  */
 @Data
 public class Permission implements Serializable {
 	private Integer id;
-	private String permissionName;
-	private String permissionDescribe;
+	private String permission_name;
+	private String permission_describe;
 }

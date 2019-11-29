@@ -3,6 +3,7 @@ package com.ecin520.api.common;
 import java.util.Random;
 
 /**
+ * 分配随机头像
  * @Author: ecin520
  * @Date: 2019/11/28 16:58
  */

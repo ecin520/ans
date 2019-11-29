@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @Author NICE
+ */
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -23,7 +26,7 @@ public class UserController {
 
 	@RequestMapping("/insertUser")
 	@HystrixCommand(fallbackMethod = "insertUserFallBack")
-	public JSONObject insertUser(@RequestParam String username, @RequestParam String password) {
+	public JSONObject insertUser(@RequestParam("username") String username, @RequestParam("password") String password) {
 
 		User user = new User();
 		user.setUsername(username);
@@ -47,6 +50,9 @@ public class UserController {
 		return JsonObject.backStatus(500, username + "注册失败-熔断回调");
 	}
 
+	/**
+	 * 获取所有用户
+	 * */
 	@RequestMapping("/listAllUsers")
 	public List<User> listAllUsers() {
 
@@ -54,6 +60,9 @@ public class UserController {
 
 	}
 
+	/**
+	 * 通过用户名获取用户信息
+	 * */
 	@RequestMapping("/getUserByUsername")
 	public User getUserByUsername(@RequestParam("username") String username) {
 		return userService.getUserByUsername(username);

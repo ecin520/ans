@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class Friend implements Serializable {
 
     private Integer id;
-    private Integer sid;
-    private Integer oid;
-    private String addTime;
+    private User selfUser;
+    private User otUser;
+    private String add_time;
 
 }

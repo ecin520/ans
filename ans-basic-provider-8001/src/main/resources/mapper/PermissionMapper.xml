@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.basic.dao.PermissionDao">
+    <insert id="insertPermission" parameterType="Permission">
+        INSERT `permission` (`permission_name`, `permission_describe`) VALUES (#{permission_name}, #{permission_describe});
+    </insert>
+    <update id="updatePermission" parameterType="Permission">
+        UPDATE `permission` SET `permission_name` = #{permission_name}, `permission_describe` = #{permission_describe} WHERE `id` = #{id};
+    </update>
+    <select id="getPermissionById" parameterType="Integer" resultType="Permission">
+        SELECT * FROM `permission` WHERE `id` = #{id};
+    </select>
+    <delete id="deletePermissionById" parameterType="Integer">
+        DELETE FROM `permission` WHERE `id` = #{id};
+    </delete>
+</mapper>

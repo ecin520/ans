@@ -11,9 +11,9 @@ import java.io.Serializable;
 public class Chat implements Serializable {
 
     private Integer id;
-    private Integer sendId;
-    private Integer receiveId;
+    private Integer send_id;
+    private Integer receive_id;
     private String content;
-    private String messageTime;
+    private String message_time;
 
 }

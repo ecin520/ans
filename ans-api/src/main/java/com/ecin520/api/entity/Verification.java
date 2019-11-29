@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class Verification implements Serializable {
     private Integer id;
-    private String sendId;
+    private String send_id;
     private String receive_id;
     private String ver_time;
     private String ver_status;

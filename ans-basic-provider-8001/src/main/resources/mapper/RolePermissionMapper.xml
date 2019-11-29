@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.basic.dao.RolePermissionDao">
+
+    <insert id="insertRolePermission" parameterType="Integer">
+        INSERT `role_permission`(`rid`, `pid`) VALUES (#{rid}, #{pid});
+    </insert>
+
+    <update id="updateRolePermission" parameterType="Integer">
+        UPDATE `role_permission` SET `rid` = #{rid}, `pid` = #{pid};
+    </update>
+
+    <delete id="deleteRolePermissionById" parameterType="Integer">
+        DELETE FROM `role_permission` WHERE `id` = #{id};
+    </delete>
+
+    <select id="listPermissionsByUserId" parameterType="Integer">
+        SELECT * FROM `permission` WHERE `id` IN ( SELECT `pid` FROM `role_permission` WHERE `rid` IN ( SELECT `rid` FROM `user_role` WHERE `uid` = #{id} ) );
+    </select>
+
+</mapper>

@@ -1,6 +1,10 @@
 package com.ecin520.basic.dao;
 
+import com.ecin520.api.entity.Role;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * @author NICE
@@ -8,4 +12,15 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface RoleDao {
+
+	Boolean insertRole(Role role);
+
+	Boolean updateRole(Role role);
+
+	Role getRoleById(Integer id);
+
+	Boolean deleteRoleById(Integer id);
+
+
+
 }

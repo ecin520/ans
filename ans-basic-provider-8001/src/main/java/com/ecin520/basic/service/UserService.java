@@ -51,4 +51,5 @@ public interface UserService {
      * @return true or false
      * */
     Boolean deleteUserById(Integer id);
+
 }

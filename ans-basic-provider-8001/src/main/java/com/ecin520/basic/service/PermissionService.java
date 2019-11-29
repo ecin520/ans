@@ -1,14 +1,12 @@
-package com.ecin520.basic.dao;
+package com.ecin520.basic.service;
 
 import com.ecin520.api.entity.Permission;
-import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @author NICE
- * @Date: 2019/11/28 10:41
+ * @Author: ecin520
+ * @Date: 2019/11/29 23:21
  */
-@Mapper
-public interface PermissionDao {
+public interface PermissionService {
 
 	Boolean insertPermission(Permission permission);
 
@@ -17,5 +15,4 @@ public interface PermissionDao {
 	Permission getPermissionById(Integer id);
 
 	Boolean deletePermissionById(Integer id);
-
 }

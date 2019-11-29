@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.basic.dao.UserRoleDao">
+
+    <insert id="insertUserRole" parameterType="Integer">
+        INSERT `user_role` (`uid`, `rid`) VALUES (#{uid}, #{rid});
+    </insert>
+
+    <update id="updateUserRole" parameterType="Integer">
+        UPDATE `user_role` SET `uid` = #{uid}, `rid` = #{rid};
+    </update>
+
+    <delete id="deleteUserRoleById" parameterType="Integer">
+        DELETE FROM `user_role` WHERE `id` = #{id};
+    </delete>
+
+    <select id="listRolesByUserId" parameterType="Integer">
+        SELECT * FROM `role` WHERE `id` IN (SELECT `rid` FROM `user_role` WHERE `uid` = #{id});
+    </select>
+</mapper>

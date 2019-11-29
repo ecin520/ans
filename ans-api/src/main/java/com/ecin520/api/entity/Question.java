@@ -10,15 +10,15 @@ import java.io.Serializable;
 @Data
 public class Question implements Serializable {
     private Integer id;
-    private String createTime;
-    private String quesType;
-    private String quesUser;
-    private String quesDescribe;
-    private String quesExplain;
-    private String aItem;
-    private String bItem;
-    private String cItem;
-    private String dItem;
-    private String ansItem;
+    private String create_time;
+    private String question_type;
+    private String question_owner;
+    private String question_describe;
+    private String question_explain;
+    private String item_a;
+    private String item_b;
+    private String item_c;
+    private String item_d;
+    private String item_ans;
 
 }
