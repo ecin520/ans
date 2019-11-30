@@ -21,6 +21,8 @@ public interface RoleDao {
 
 	Boolean deleteRoleById(Integer id);
 
+	List<Role> listAllRoles();
+
 
 
 }

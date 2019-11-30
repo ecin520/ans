@@ -5,6 +5,9 @@
     <insert id="insertRole" parameterType="Role">
         INSERT `role` (`role_name`, `role_describe`) VALUES (#{role_name}, #{role_describe});
     </insert>
+    <select id="listAllRoles" resultType="Role">
+        SELECT * FROM `role`;
+    </select>
     <update id="updateRole" parameterType="Role">
         UPDATE `role` SET `role_name` = #{role_name}, `role_describe` = #{role_describe} WHERE `id` = #{id};
     </update>

@@ -8,6 +8,7 @@ import com.ecin520.api.entity.User;
 import com.ecin520.basic.service.UserService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,22 +26,42 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping("/insertUser")
-	@HystrixCommand(fallbackMethod = "insertUserFallBack")
-	public JSONObject insertUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+//	@HystrixCommand(fallbackMethod = "insertUserFallBack")
+	public JSONObject insertUser(@RequestBody User user) {
 
-		User user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
-		user.setNickname(RandomName.getRandomName().toString());
-		user.setAvatar_url(RandomAvatar.getRandomAvatar());
-		userService.insertUser(user);
-
-		try {
-			return JsonObject.backStatus(200, "注册成功！");
-		} catch (Exception e) {
-			return JsonObject.backStatus(500, username + "注册失败！");
+		if (user.getNickname() == null) {
+			user.setNickname(RandomName.getRandomName().toString());
+		}
+		if (user.getAvatar_url() == null) {
+			user.setAvatar_url(RandomAvatar.getRandomAvatar());
 		}
 
+		try {
+			userService.insertUser(user);
+			return JsonObject.backStatus(200, "注册成功！");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonObject.backStatus(500, user.getUsername() + "注册失败！");
+		}
+
+	}
+
+	@RequestMapping("/updateUser")
+	public JSONObject updateUser(@RequestBody User user) {
+		if (userService.updateUser(user)) {
+			return JsonObject.backStatus(200, "修改成功！");
+		} else {
+			return JsonObject.backStatus(500, user.getUsername() + "修改失败！");
+		}
+	}
+
+	@RequestMapping("/deleteUserById")
+	public JSONObject deleteUserById(@RequestParam("id") Integer id) {
+		if (userService.deleteUserById(id)) {
+			return JsonObject.backStatus(200, "删除成功！");
+		} else {
+			return JsonObject.backStatus(500, "删除失败！");
+		}
 	}
 
 	/**
@@ -67,5 +88,6 @@ public class UserController {
 	public User getUserByUsername(@RequestParam("username") String username) {
 		return userService.getUserByUsername(username);
 	}
+
 
 }

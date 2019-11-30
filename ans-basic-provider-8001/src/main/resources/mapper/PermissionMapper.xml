@@ -5,6 +5,9 @@
     <insert id="insertPermission" parameterType="Permission">
         INSERT `permission` (`permission_name`, `permission_describe`) VALUES (#{permission_name}, #{permission_describe});
     </insert>
+    <select id="listAllPermissions" resultType="Permission">
+        SELECT * FROM `permission`;
+    </select>
     <update id="updatePermission" parameterType="Permission">
         UPDATE `permission` SET `permission_name` = #{permission_name}, `permission_describe` = #{permission_describe} WHERE `id` = #{id};
     </update>

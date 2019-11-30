@@ -4,6 +4,7 @@ import com.ecin520.api.entity.Permission;
 import com.ecin520.basic.dao.RolePermissionDao;
 import com.ecin520.basic.service.RolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @Author: ecin520
  * @Date: 2019/11/29 23:25
  */
+@Service
 public class RolePermissionServiceImpl implements RolePermissionService {
 
 	@Autowired

@@ -15,7 +15,7 @@
         DELETE FROM `user_role` WHERE `id` = #{id};
     </delete>
 
-    <select id="listRolesByUserId" parameterType="Integer">
+    <select id="listRolesByUserId" parameterType="Integer" resultType="Role">
         SELECT * FROM `role` WHERE `id` IN (SELECT `rid` FROM `user_role` WHERE `uid` = #{id});
     </select>
 </mapper>

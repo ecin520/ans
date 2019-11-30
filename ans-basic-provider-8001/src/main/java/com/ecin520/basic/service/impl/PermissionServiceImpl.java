@@ -6,6 +6,8 @@ import com.ecin520.basic.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: ecin520
  * @Date: 2019/11/29 23:24
@@ -30,5 +32,9 @@ public class PermissionServiceImpl implements PermissionService {
 
 	public Boolean deletePermissionById(Integer id) {
 		return permissionDao.deletePermissionById(id);
+	}
+
+	public List<Permission> listAllPermissions() {
+		return permissionDao.listAllPermissions();
 	}
 }

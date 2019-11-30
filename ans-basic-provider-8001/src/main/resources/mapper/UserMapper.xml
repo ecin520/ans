@@ -4,9 +4,19 @@
 <mapper namespace="com.ecin520.basic.dao.UserDao">
 
     <insert id="insertUser" parameterType="User">
-        INSERT `user` ( `username`, `password`, `nickname`, `avatar_url`,`register_time` )
-            VALUES ( #{username}, #{password}, #{nickname}, #{avatar_url}, NOW());
+        INSERT `user` ( `username`, `password`, `nickname`, `avatar_url`, `tel_number`, `register_time`)
+            VALUES ( #{username}, #{password}, #{nickname}, #{avatar_url}, #{tel_number}, NOW());
     </insert>
+
+    <update id="updateUser" parameterType="User">
+        UPDATE `user` SET `username` = #{username}, `nickname` = #{nickname}, `avatar_url` = #{avatar_url},
+            `tel_number` = #{tel_number}, `rank` = #{rank}, `sign` = #{sign}, `status` = #{status}, `ans_number` = #{ans_number},
+            `correct_number` = #{correct_number}, `good_at` = #{good_at}, `register_time` = #{register_time} WHERE `id` = #{id};
+    </update>
+
+    <delete id="deleteUserById" parameterType="Integer">
+        DELETE FROM `user` WHERE `id` = #{id};
+    </delete>
 
     <select id="getUserById" resultType="User" parameterType="Integer">
         SELECT * FROM `user` WHERE `id` = #{id};

@@ -6,6 +6,8 @@ import com.ecin520.basic.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author: ecin520
  * @Date: 2019/11/29 23:23
@@ -30,5 +32,9 @@ public class RoleServiceImpl implements RoleService {
 
 	public Boolean deleteRoleById(Integer id) {
 		return roleDao.deleteRoleById(id);
+	}
+
+	public List<Role> listAllRoles() {
+		return roleDao.listAllRoles();
 	}
 }
