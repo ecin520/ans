@@ -20,6 +20,11 @@ public class RoleController {
 	@Autowired
 	private RoleService roleService;
 
+	/**
+	 * 插入角色
+	 * @param roleName 角色名称
+	 * @param roleDescribe 角色描述
+	 * */
 	@RequestMapping("/insertRole")
 	public JSONObject insertRole(@RequestParam("role_name") String roleName, @RequestParam("role_describe") String roleDescribe) {
 		Role role = new Role();
@@ -32,11 +37,19 @@ public class RoleController {
 		}
 	}
 
+	/**
+	 * 获取所有角色
+	 * @return List<Role>
+	 * */
 	@RequestMapping("/listAllRoles")
 	public List<Role> listAllRoles() {
 		return roleService.listAllRoles();
 	}
 
+	/**
+	 * 修改角色
+	 * @param role 传入的角色
+	 * */
 	@RequestMapping("/updateRole")
 	public JSONObject updateRole(@RequestBody Role role) {
 		if (roleService.updateRole(role)) {
@@ -46,11 +59,21 @@ public class RoleController {
 		}
 	}
 
+	/**
+	 * 通过角色id获取角色
+	 * @param id 角色id
+	 * @return Role
+	 * */
 	@RequestMapping("/getRoleById")
 	public Role getRoleById(@RequestParam("id") Integer id) {
 		return roleService.getRoleById(id);
 	}
 
+	/**
+	 * 通过角色id删除角色
+	 * @param id 角色id
+	 * @return JSONObject
+	 * */
 	@RequestMapping("/deleteRoleById")
 	public JSONObject deleteRoleById(@RequestParam("id") Integer id) {
 		if (roleService.deleteRoleById(id)) {

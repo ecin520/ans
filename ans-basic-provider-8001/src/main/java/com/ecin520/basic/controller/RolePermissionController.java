@@ -23,6 +23,11 @@ public class RolePermissionController {
 	@Autowired
 	private RolePermissionService rolePermissionService;
 
+	/**
+	 * 插入角色权限
+	 * @param rid 角色id
+	 * @param pid 权限id
+	 * */
 	@RequestMapping("/insertRolePermission")
 	public JSONObject insertRolePermission(@RequestParam("rid") Integer rid, @RequestParam("pid") Integer pid) {
 		if (rolePermissionService.insertRolePermission(rid, pid)) {
@@ -32,6 +37,10 @@ public class RolePermissionController {
 		}
 	}
 
+	/**
+	 * 删除角色权限
+	 * @param id 角色权限id
+	 * */
 	@RequestMapping("/deleteRolePermission")
 	public JSONObject deleteRolePermission(@RequestParam("id") Integer id) {
 		if (rolePermissionService.deleteRolePermissionById(id)) {
@@ -41,11 +50,19 @@ public class RolePermissionController {
 		}
 	}
 
+	/**
+	 * 通过用户id获取其所有权限
+	 * @param id 用户ud
+	 * */
 	@RequestMapping("/listPermissionsByUserId")
 	public List<Permission> listRolesByUserId(@RequestParam("id") Integer id) {
 		return rolePermissionService.listPermissionsByUserId(id);
 	}
 
+	/**
+	 * 通过角色id获取该角色所有权限
+	 * @param rid 角色id
+	 * */
 	@RequestMapping("/listPermissionsByRoleId")
 	public List<Permission> listPermissionsByRoleId(@RequestParam("rid") Integer rid) {
 		return rolePermissionService.listPermissionsByRoleId(rid);

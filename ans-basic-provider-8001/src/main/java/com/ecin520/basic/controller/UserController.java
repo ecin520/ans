@@ -25,13 +25,17 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	/**
+	 * 插入用户
+	 * */
 	@RequestMapping("/insertUser")
-//	@HystrixCommand(fallbackMethod = "insertUserFallBack")
 	public JSONObject insertUser(@RequestBody User user) {
 
+		// 昵称为空则随机取名
 		if (user.getNickname() == null) {
 			user.setNickname(RandomName.getRandomName().toString());
 		}
+		// 头像随机赋予
 		if (user.getAvatar_url() == null) {
 			user.setAvatar_url(RandomAvatar.getRandomAvatar());
 		}
@@ -45,7 +49,16 @@ public class UserController {
 		}
 
 	}
+	/**
+	 * 注册失败的回调方法
+	 * */
+	public JSONObject insertUserFallBack(@RequestParam("username") String username, @RequestParam("password") String password) {
+		return JsonObject.backStatus(500, username + "注册失败-熔断回调");
+	}
 
+	/**
+	* 用户数据更新
+	* */
 	@RequestMapping("/updateUser")
 	public JSONObject updateUser(@RequestBody User user) {
 		if (userService.updateUser(user)) {
@@ -55,6 +68,9 @@ public class UserController {
 		}
 	}
 
+	/**
+	 * 通过用户id删除用户
+	 * */
 	@RequestMapping("/deleteUserById")
 	public JSONObject deleteUserById(@RequestParam("id") Integer id) {
 		if (userService.deleteUserById(id)) {
@@ -64,12 +80,7 @@ public class UserController {
 		}
 	}
 
-	/**
-	 * 注册失败的回调方法
-	 * */
-	public JSONObject insertUserFallBack(@RequestParam("username") String username, @RequestParam("password") String password) {
-		return JsonObject.backStatus(500, username + "注册失败-熔断回调");
-	}
+
 
 	/**
 	 * 获取所有用户
