@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.chat.dao.VerificationDao">
+    <insert id="insertVerification" parameterType="com.ecin520.api.entity.Verification">
+        INSERT `verification` (`send_id`, `receive_id`, `ver_time`, `ver_status`) VALUES (#{send_id}, #{receive_id}, NOW(), #{ver_status});
+    </insert>
+    <update id="updateVerificationsStatus" parameterType="com.ecin520.api.entity.Verification">
+        UPDATE `verification` SET `ver_status` = #{ver_status} WHERE `send_id` = #{send_id} AND `receive_id` = #{receive_id};
+    </update>
+    <select id="listUserUnverified" parameterType="Integer" resultType="com.ecin520.api.entity.Verification">
+        SELECT * FROM `verification` WHERE `receive_id` = #{id} AND `ver_status` = 3 ;
+    </select>
+</mapper>

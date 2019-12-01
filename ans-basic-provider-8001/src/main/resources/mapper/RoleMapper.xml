@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ecin520.basic.dao.RoleDao">
-    <insert id="insertRole" parameterType="Role">
+    <insert id="insertRole" parameterType="com.ecin520.api.entity.Role">
         INSERT `role` (`role_name`, `role_describe`) VALUES (#{role_name}, #{role_describe});
     </insert>
-    <select id="listAllRoles" resultType="Role">
+    <select id="listAllRoles" resultType="com.ecin520.api.entity.Role">
         SELECT * FROM `role`;
     </select>
-    <update id="updateRole" parameterType="Role">
+    <update id="updateRole" parameterType="com.ecin520.api.entity.Role">
         UPDATE `role` SET `role_name` = #{role_name}, `role_describe` = #{role_describe} WHERE `id` = #{id};
     </update>
-    <select id="getRoleById" parameterType="Integer" resultType="Role">
+    <select id="getRoleById" parameterType="Integer" resultType="com.ecin520.api.entity.Role">
         SELECT * FROM `role` WHERE `id` = #{id};
     </select>
     <delete id="deleteRoleById" parameterType="Integer">

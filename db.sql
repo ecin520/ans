@@ -2,8 +2,8 @@
 -- 基本用户表
 CREATE TABLE `user` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`username` VARCHAR ( 300 ) UNIQUE,
-	`password` VARCHAR ( 300 ),
+	`username` VARCHAR ( 300 ) NOT NULL UNIQUE,
+	`password` VARCHAR ( 300 ) NOT NULL,
 	`nickname` VARCHAR ( 3600 ),
 	`avatar_url` VARCHAR ( 3600 ),
 	`tel_number` VARCHAR ( 300 ),
@@ -66,6 +66,9 @@ CREATE TABLE `friend` (
 );
 ALTER TABLE `friend` AUTO_INCREMENT = 100;
 
+-- 查询某个id的所有好友
+-- SELECT `nickname`, `username` FROM `user` WHERE `id` IN ( SELECT `oid` FROM `friend` WHERE `sid` = 100 );
+
 -- 好友验证表，
 CREATE TABLE `verification` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -83,6 +86,7 @@ CREATE TABLE `chat` (
 	`send_id` INTEGER,
 	`receive_id` INTEGER,
 	`content` VARCHAR ( 3600 ),
+	`read_status` INTEGER,
 	`time` VARCHAR ( 300 ),
 	FOREIGN KEY ( `send_id` ) REFERENCES `user` ( `id` )
 );
@@ -151,7 +155,14 @@ SELECT * FROM `permission` WHERE `id` IN (
 	SELECT `pid` FROM `role_permission` WHERE `rid` IN (
 	SELECT `rid` FROM `user_role` WHERE `uid` = 1 ) );
 
+SELECT * FROM `role`;
+DELETE FROM `role` WHERE `id` = 104;
 
+SELECT * FROM `role` WHERE `id` IN (SELECT `rid` FROM `user_role` WHERE `uid` = 100);
+
+INSERT `user_role`(`uid`, `rid`) VALUES(100, 101);
+
+DELETE FROM `user_role` WHERE `id` = 109;
 
 
 INSERT `user` ( `username`, `password`, `nickname`, `avatar_url`,`register_time` ) VALUES ( 'ecin5201', 'qwer1234', '智学者', 'http://148.70.50.70/source/1572837893695.jpg', NOW());

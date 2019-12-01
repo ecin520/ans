@@ -1,6 +1,7 @@
 package com.ecin520.api.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * @Date: 2019/11/29 19:29
  */
 @Data
+@Accessors(chain = true)
 public class UserRole {
 	private Integer id;
 	private User user;

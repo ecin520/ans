@@ -15,11 +15,11 @@
         DELETE FROM `role_permission` WHERE `id` = #{id};
     </delete>
 
-    <select id="listPermissionsByUserId" parameterType="Integer" resultType="Permission">
+    <select id="listPermissionsByUserId" parameterType="Integer" resultType="com.ecin520.api.entity.Permission">
         SELECT * FROM `permission` WHERE `id` IN ( SELECT `pid` FROM `role_permission` WHERE `rid` IN ( SELECT `rid` FROM `user_role` WHERE `uid` = #{id} ) );
     </select>
 
-    <select id="listPermissionsByRoleId" resultType="Permission">
+    <select id="listPermissionsByRoleId" resultType="com.ecin520.api.entity.Permission">
         SELECT * FROM `permission` WHERE `id` IN (SELECT `pid` FROM `role_permission` WHERE `rid` = #{rid});
     </select>
 

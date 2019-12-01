@@ -1,6 +1,7 @@
 package com.ecin520.api.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
@@ -8,6 +9,7 @@ import java.io.Serializable;
  * @author NICE
  */
 @Data
+@Accessors(chain = true)
 public class User implements Serializable {
     private Integer id;
     private String username;

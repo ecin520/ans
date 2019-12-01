@@ -15,7 +15,7 @@
         DELETE FROM `user_role` WHERE `uid` = #{arg0} AND `rid` = #{arg1};
     </delete>
 
-    <select id="listRolesByUserId" parameterType="Integer" resultType="Role">
+    <select id="listRolesByUserId" parameterType="Integer" resultType="com.ecin520.api.entity.Role">
         SELECT * FROM `role` WHERE `id` IN (SELECT `rid` FROM `user_role` WHERE `uid` = #{id});
     </select>
 </mapper>
