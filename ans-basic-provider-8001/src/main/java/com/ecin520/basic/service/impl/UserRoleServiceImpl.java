@@ -26,8 +26,8 @@ public class UserRoleServiceImpl implements UserRoleService {
 		return userRoleDao.updateUserRole(uid, rid);
 	}
 
-	public Boolean deleteUserRoleById(Integer id) {
-		return userRoleDao.deleteUserRoleById(id);
+	public Boolean deleteUserRoleById(Integer uid, Integer rid) {
+		return userRoleDao.deleteUserRoleById(uid, rid);
 	}
 
 	public List<Role> listRolesByUserId(Integer id) {

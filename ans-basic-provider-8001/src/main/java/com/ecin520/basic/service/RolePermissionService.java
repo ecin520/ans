@@ -17,4 +17,6 @@ public interface RolePermissionService {
 	Boolean deleteRolePermissionById(Integer id);
 
 	List<Permission> listPermissionsByUserId(Integer id);
+
+	List<Permission> listPermissionsByRoleId(Integer rid);
 }

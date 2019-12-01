@@ -20,4 +20,6 @@ public interface RolePermissionDao {
 
 	List<Permission> listPermissionsByUserId(Integer id);
 
+	List<Permission> listPermissionsByRoleId(Integer rid);
+
 }

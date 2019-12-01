@@ -33,4 +33,8 @@ public class RolePermissionServiceImpl implements RolePermissionService {
 	public List<Permission> listPermissionsByUserId(Integer id) {
 		return rolePermissionDao.listPermissionsByUserId(id);
 	}
+
+	public List<Permission> listPermissionsByRoleId(Integer rid) {
+		return rolePermissionDao.listPermissionsByRoleId(rid);
+	}
 }

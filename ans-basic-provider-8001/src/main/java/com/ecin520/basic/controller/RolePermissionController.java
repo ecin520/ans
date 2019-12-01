@@ -45,4 +45,9 @@ public class RolePermissionController {
 	public List<Permission> listRolesByUserId(@RequestParam("id") Integer id) {
 		return rolePermissionService.listPermissionsByUserId(id);
 	}
+
+	@RequestMapping("/listPermissionsByRoleId")
+	public List<Permission> listPermissionsByRoleId(@RequestParam("rid") Integer rid) {
+		return rolePermissionService.listPermissionsByRoleId(rid);
+	}
 }

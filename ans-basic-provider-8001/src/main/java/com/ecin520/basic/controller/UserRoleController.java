@@ -32,8 +32,8 @@ public class UserRoleController {
 	}
 
 	@RequestMapping("/deleteUserRole")
-	public JSONObject deleteUserRole(@RequestParam("id") Integer id) {
-		if (userRoleService.deleteUserRoleById(id)) {
+	public JSONObject deleteUserRole(@RequestParam("uid") Integer uid, @RequestParam("rid") Integer rid) {
+		if (userRoleService.deleteUserRoleById(uid, rid)) {
 			return JsonObject.backStatus(200, "删除用户角色成功！");
 		} else {
 			return JsonObject.backStatus(500, "删除用户角色失败！");

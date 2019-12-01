@@ -14,7 +14,7 @@ public interface UserRoleService {
 
 	Boolean updateUserRole(Integer uid, Integer rid);
 
-	Boolean deleteUserRoleById(Integer id);
+	Boolean deleteUserRoleById(Integer uid, Integer rid);
 
 	List<Role> listRolesByUserId(Integer id);
 }

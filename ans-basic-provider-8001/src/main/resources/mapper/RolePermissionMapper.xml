@@ -4,7 +4,7 @@
 <mapper namespace="com.ecin520.basic.dao.RolePermissionDao">
 
     <insert id="insertRolePermission" parameterType="Integer">
-        INSERT `role_permission`(`rid`, `pid`) VALUES (#{rid}, #{pid});
+        INSERT `role_permission`(`rid`, `pid`) VALUES (#{arg0}, #{arg1});
     </insert>
 
     <update id="updateRolePermission" parameterType="Integer">
@@ -15,8 +15,12 @@
         DELETE FROM `role_permission` WHERE `id` = #{id};
     </delete>
 
-    <select id="listPermissionsByUserId" parameterType="Integer">
+    <select id="listPermissionsByUserId" parameterType="Integer" resultType="Permission">
         SELECT * FROM `permission` WHERE `id` IN ( SELECT `pid` FROM `role_permission` WHERE `rid` IN ( SELECT `rid` FROM `user_role` WHERE `uid` = #{id} ) );
+    </select>
+
+    <select id="listPermissionsByRoleId" resultType="Permission">
+        SELECT * FROM `permission` WHERE `id` IN (SELECT `pid` FROM `role_permission` WHERE `rid` = #{rid});
     </select>
 
 </mapper>

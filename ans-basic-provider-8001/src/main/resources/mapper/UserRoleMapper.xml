@@ -4,7 +4,7 @@
 <mapper namespace="com.ecin520.basic.dao.UserRoleDao">
 
     <insert id="insertUserRole" parameterType="Integer">
-        INSERT `user_role` (`uid`, `rid`) VALUES (#{uid}, #{rid});
+        INSERT `user_role` (`uid`, `rid`) VALUES (#{arg0}, #{arg1});
     </insert>
 
     <update id="updateUserRole" parameterType="Integer">
@@ -12,7 +12,7 @@
     </update>
 
     <delete id="deleteUserRoleById" parameterType="Integer">
-        DELETE FROM `user_role` WHERE `id` = #{id};
+        DELETE FROM `user_role` WHERE `uid` = #{arg0} AND `rid` = #{arg1};
     </delete>
 
     <select id="listRolesByUserId" parameterType="Integer" resultType="Role">
