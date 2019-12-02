@@ -1,5 +1,6 @@
 package com.ecin520.answer.service.impl;
 
+import com.ecin520.answer.dao.QuestionDao;
 import com.ecin520.answer.service.QuestionService;
 import com.ecin520.api.entity.Question;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,34 +15,35 @@ import java.util.List;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
-    private QuestionService questionService;
+    private QuestionDao questionDao;
 
     @Autowired
-    public QuestionServiceImpl(QuestionService questionService) {
-        this.questionService = questionService;
+    public QuestionServiceImpl(QuestionDao questionDao) {
+        this.questionDao = questionDao;
     }
 
+
     public Boolean insertQuestion(Question question) {
-        return questionService.insertQuestion(question);
+        return questionDao.insertQuestion(question);
     }
 
     public Boolean updateQuestion(Question question) {
-        return updateQuestion(question);
+        return questionDao.updateQuestion(question);
     }
 
     public Boolean deleteQuestion(Integer id) {
-        return deleteQuestion(id);
+        return questionDao.deleteQuestion(id);
     }
 
     public List<Question> listAllQuestions() {
-        return listAllQuestions();
+        return questionDao.listAllQuestions();
     }
 
     public List<Question> getQuestionsByTypeName(String typeName) {
-        return getQuestionsByTypeName(typeName);
+        return questionDao.getQuestionsByTypeName(typeName);
     }
 
     public Question getQuestionById(Integer id) {
-        return getQuestionById(id);
+        return questionDao.getQuestionById(id);
     }
 }

@@ -32,19 +32,19 @@ public interface ContestDao {
      * @param uid user id
      * @return List<Contest>
      * */
-    List<Contest> listContestByUserAid(Integer uid);
+    List<Contest> listContestsByUserAid(Integer uid);
 
     /**
      * 当第一个发起比赛者等待后，另一方对手匹配到后，另一方为user_a，发起者为user_b
      * @param uid user id
      * @return List<Contest>
      * */
-    List<Contest> listContestByUserBid(Integer uid);
+    List<Contest> listContestsByUserBid(Integer uid);
 
     /**
      * 列出所有比赛记录
      * @return List<Contest>
      * */
-    List<Contest> listAllContest();
+    List<Contest> listAllContests();
 
 }

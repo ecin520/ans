@@ -1,5 +1,6 @@
 package com.ecin520.answer.service.impl;
 
+import com.ecin520.answer.dao.ContestDao;
 import com.ecin520.answer.service.ContestService;
 import com.ecin520.api.entity.Contest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,30 +15,30 @@ import java.util.List;
 @Service
 public class ContestServiceImpl implements ContestService {
 
-    private ContestService contestService;
+    private ContestDao contestDao;
 
-    @Autowired
-    public ContestServiceImpl(ContestService contestService) {
-        this.contestService = contestService;
+    public ContestServiceImpl(ContestDao contestDao) {
+        this.contestDao = contestDao;
     }
 
+
     public Boolean insertContest(Contest contest) {
-        return contestService.insertContest(contest);
+        return contestDao.insertContest(contest);
     }
 
     public Boolean updateContest(Contest contest) {
-        return contestService.updateContest(contest);
+        return contestDao.updateContest(contest);
     }
 
-    public List<Contest> listContestByUserAid(Integer uid) {
-        return contestService.listContestByUserAid(uid);
+    public List<Contest> listContestsByUserAid(Integer uid) {
+        return contestDao.listContestsByUserAid(uid);
     }
 
-    public List<Contest> listContestByUserBid(Integer uid) {
-        return contestService.listContestByUserBid(uid);
+    public List<Contest> listContestsByUserBid(Integer uid) {
+        return contestDao.listContestsByUserBid(uid);
     }
 
-    public List<Contest> listAllContest() {
-        return contestService.listAllContest();
+    public List<Contest> listAllContests() {
+        return contestDao.listAllContests();
     }
 }
