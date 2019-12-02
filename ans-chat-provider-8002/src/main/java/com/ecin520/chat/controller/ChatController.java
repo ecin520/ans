@@ -55,14 +55,32 @@ public class ChatController {
 	 * 查看指定用户的聊天记录
 	 * send_id 为自己 id receive_id 为对方 id 时获取的是自己给对方发送的消息
 	 * send_id 为对方 id receive_id 为自己 id 时获取的时对方给自己发送的消息
+	 * 同时更新聊天状态
 	 * @param receiveId  receiveId
 	 * @param sendId  sendId
 	 * @return List<Chat>
 	 * */
 	@RequestMapping("/listChatRecode")
 	public List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
-		return chatService.listChatRecode(receiveId, sendId);
+		// 更新消息的状态信息
+		chatService.updateChat(sendId, receiveId);
+		// 返回消息列表
+		return chatService.listChatRecode(sendId, receiveId);
 	}
+
+
+	/**
+	 * 获取最新的消息记录，用于放在列表页面
+	 * @param sendId sendId
+	 * @param receiveId receiveId
+	 * @return Chat
+	 * */
+	@RequestMapping("/getLatestChat")
+	public Chat getLatestChat(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
+		return chatService.getLatestChat(sendId, receiveId);
+	}
+
+
 
 
 }

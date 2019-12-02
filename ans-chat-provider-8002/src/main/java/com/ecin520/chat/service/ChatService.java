@@ -25,7 +25,7 @@ public interface ChatService {
 	 * @param chat chat
 	 * @return Boolean
 	 * */
-	Boolean updateChat(Chat chat);
+	Boolean updateChat(Integer sendId, Integer receiveId);
 
 	/**
 	 * 通过 receiveId 查找本用户所有的消息列表的用户，chat结构为{"send_id": *, "receive_id": *}
@@ -42,4 +42,11 @@ public interface ChatService {
 	 * */
 	List<Chat> listChatRecode(Integer sendId, Integer receiveId);
 
+	/**
+	 * 获取最新的消息记录，用于放在列表页面
+	 * @param sendId sendId
+	 * @param receiveId receiveId
+	 * @return Chat
+	 * */
+	Chat getLatestChat(Integer sendId, Integer receiveId);
 }

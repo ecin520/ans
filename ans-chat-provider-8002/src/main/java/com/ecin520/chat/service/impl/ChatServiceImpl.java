@@ -27,8 +27,8 @@ public class ChatServiceImpl implements ChatService {
 		return chatDao.insertChat(chat);
 	}
 
-	public Boolean updateChat(Chat chat) {
-		return chatDao.updateChat(chat);
+	public Boolean updateChat(Integer sendId, Integer receiveId) {
+		return chatDao.updateChat(sendId, receiveId);
 	}
 
 	public List<User> listAllUsersByReceiveId(Integer receiveId) {
@@ -37,5 +37,9 @@ public class ChatServiceImpl implements ChatService {
 
 	public List<Chat> listChatRecode(Integer sendId, Integer receiveId) {
 		return chatDao.listChatRecode(sendId, receiveId);
+	}
+
+	public Chat getLatestChat(Integer sendId, Integer receiveId) {
+		return chatDao.getLatestChat(sendId, receiveId);
 	}
 }
