@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.answer.dao.QuestionDao">
+    <insert id="insertQuestion" parameterType="com.ecin520.api.entity.Question">
+        INSERT `question`(`create_time`, `type_name`, `question_owner`,
+            `question_describe`, `question_explain`, `item_a`,
+            `item_b`, `item_c`, `item_d`, `item_ans`) VALUES (
+            NOW(), #{type_name}, #{question_owner}, #{question_describe},
+            #{question_explain}, #{item_a}, #{item_b}, #{item_c}, #{item_d}, #{item_ans}
+            );
+    </insert>
+    <update id="updateQuestion" parameterType="com.ecin520.api.entity.Question">
+        UPDATE `question` SET `type_name` = #{type_name}, `question_owner` = #{question_owner},
+            `question_describe` = #{question_describe}, `question_explain` = #{question_explain},
+            `item_a` = #{item_a}, `item_b` = #{item_b}, `item_c` = #{item_c}, `item_d` = #{item_d},
+            `item_ans` = #{item_ans} WHERE `id` = #{id};
+    </update>
+    <delete id="deleteQuestion" parameterType="Integer">
+        DELETE FROM `question` WHERE `id` = #{id};
+    </delete>
+    <select id="listAllQuestions" resultType="com.ecin520.api.entity.Question">
+        SELECT * FROM `question`;
+    </select>
+    <select id="getQuestionByTypeName" parameterType="String" resultType="com.ecin520.api.entity.Question">
+        SELECT * FROM `question` WHERE `type_name` = #{typeName};
+    </select>
+    <select id="getQuestionById" parameterType="Integer" resultType="com.ecin520.api.entity.Question">
+        SELECT * FORM `question` WHERE `id` = #{id};
+    </select>
+</mapper>

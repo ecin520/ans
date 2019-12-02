@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.answer.dao.TypeDao">
+    <insert id="insertType" parameterType="com.ecin520.api.entity.Type">
+        INSERT `type` (`type_name`, `type_describe`, `hot`, `difficulty`)
+            VALUES (#{type_name}, #{type_describe}, 0, 0);
+    </insert>
+    <!--使用唯一的type_name来更新数据-->
+    <update id="updateType" parameterType="com.ecin520.api.entity.Type">
+        UPDATE `type` SET `type_name` = #{type_name}, `type_describe` = #{type_describe},
+            `hot` = #{hot}, `difficulty` = #{difficulty} WHERE `type_name` = #{type_name};
+    </update>
+    <select id="listAllType" resultType="com.ecin520.api.entity.Type">
+        SELECT * FROM `type`;
+    </select>
+    <select id="getTypeByTypeName" parameterType="String" resultType="com.ecin520.api.entity.Type">
+        SELECT * FROM `type` WHERE `type_name` = #{typeName};
+    </select>
+</mapper>

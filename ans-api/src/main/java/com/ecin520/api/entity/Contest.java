@@ -11,8 +11,8 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class Contest {
 	private Integer id;
-	private User user_a;
-	private User user_b;
+	private Integer user_a;
+	private Integer user_b;
 	private Integer win_id;
 	private String contest_time;
 }

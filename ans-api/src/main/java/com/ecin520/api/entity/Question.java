@@ -13,8 +13,8 @@ import java.io.Serializable;
 public class Question implements Serializable {
     private Integer id;
     private String create_time;
-    private String question_type;
-    private String question_owner;
+    private String type_name;
+    private Integer question_owner;
     private String question_describe;
     private String question_explain;
     private String item_a;

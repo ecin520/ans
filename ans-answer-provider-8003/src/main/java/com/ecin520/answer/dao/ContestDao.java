@@ -1,0 +1,50 @@
+package com.ecin520.answer.dao;
+
+import com.ecin520.api.entity.Contest;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+/**
+ * @author ecin520
+ * @date: 2019/12/2 9:54
+ */
+@Mapper
+public interface ContestDao {
+
+    /**
+     * 插入一场比赛
+     * @param contest contest对象
+     * @return Booleaen 是否插入成功
+     * */
+    Boolean insertContest(Contest contest);
+
+    /**
+     * 更新这场比赛的信息
+     * @param contest contest对象
+     * @return Boolean
+     *
+     * */
+    Boolean updateContest(Contest contest);
+
+    /**
+     * 当第一个发起比赛者等待后，另一方对手匹配到后，另一方为user_a，发起者为user_b
+     * @param uid user id
+     * @return List<Contest>
+     * */
+    List<Contest> listContestByUserAId(Integer uid);
+
+    /**
+     * 当第一个发起比赛者等待后，另一方对手匹配到后，另一方为user_a，发起者为user_b
+     * @param uid user id
+     * @return List<Contest>
+     * */
+    List<Contest> listContestByUserBId(Integer uid);
+
+    /**
+     * 列出所有比赛记录
+     * @return List<Contest>
+     * */
+    List<Contest> listAllContest();
+
+}

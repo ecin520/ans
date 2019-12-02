@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ecin520.answer.dao.ContestDao">
+    <insert id="insertContest" parameterType="com.ecin520.api.entity.Contest">
+        INSERT `contest`(`user_a`, `user_b`, `win_id`, `contest_time`) VALUES (
+            #{user_a}, #{user_b}, 0, NOW()
+        );
+    </insert>
+    <update id="updateContest" parameterType="com.ecin520.api.entity.Contest">
+        UPDATE `contest` SET `win_id` = #{win_id} WHERE `id` = #{id};
+    </update>
+    <select id="listContestByUserAId" parameterType="Integer" resultType="com.ecin520.api.entity.Contest">
+        SELECT * FROM `contest` WHERE `user_a` = #{uid};
+    </select>
+    <select id="listContestByUserBId" parameterType="Integer" resultType="com.ecin520.api.entity.Contest">
+        SELECT * FROM `contest` WHERE `user_b` = #{uid};
+    </select>
+    <select id="listAllContest" resultType="com.ecin520.api.entity.Contest">
+        SELECT * FROM `contest`;
+    </select>
+</mapper>

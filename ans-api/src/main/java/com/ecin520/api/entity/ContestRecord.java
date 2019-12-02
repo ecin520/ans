@@ -9,9 +9,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class ContestRecoder {
+public class ContestRecord {
 	private Integer id;
-	private Contest contest;
-	private Question question;
+	private Integer contest_id;
+	private Integer question_id;
 	private Integer win_id;
 }
