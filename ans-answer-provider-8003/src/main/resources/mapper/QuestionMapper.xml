@@ -22,7 +22,7 @@
     <select id="listAllQuestions" resultType="com.ecin520.api.entity.Question">
         SELECT * FROM `question`;
     </select>
-    <select id="getQuestionByTypeName" parameterType="String" resultType="com.ecin520.api.entity.Question">
+    <select id="getQuestionsByTypeName" parameterType="String" resultType="com.ecin520.api.entity.Question">
         SELECT * FROM `question` WHERE `type_name` = #{typeName};
     </select>
     <select id="getQuestionById" parameterType="Integer" resultType="com.ecin520.api.entity.Question">

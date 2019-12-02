@@ -16,6 +16,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     private QuestionService questionService;
 
+    @Autowired
     public QuestionServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
     }
@@ -36,8 +37,8 @@ public class QuestionServiceImpl implements QuestionService {
         return listAllQuestions();
     }
 
-    public List<Question> getQuestionByTypeName(String typeName) {
-        return getQuestionByTypeName(typeName);
+    public List<Question> getQuestionsByTypeName(String typeName) {
+        return getQuestionsByTypeName(typeName);
     }
 
     public Question getQuestionById(Integer id) {

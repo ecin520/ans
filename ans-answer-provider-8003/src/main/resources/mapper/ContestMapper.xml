@@ -10,10 +10,10 @@
     <update id="updateContest" parameterType="com.ecin520.api.entity.Contest">
         UPDATE `contest` SET `win_id` = #{win_id} WHERE `id` = #{id};
     </update>
-    <select id="listContestByUserAId" parameterType="Integer" resultType="com.ecin520.api.entity.Contest">
+    <select id="listContestByUserAid" parameterType="Integer" resultType="com.ecin520.api.entity.Contest">
         SELECT * FROM `contest` WHERE `user_a` = #{uid};
     </select>
-    <select id="listContestByUserBId" parameterType="Integer" resultType="com.ecin520.api.entity.Contest">
+    <select id="listContestByUserBid" parameterType="Integer" resultType="com.ecin520.api.entity.Contest">
         SELECT * FROM `contest` WHERE `user_b` = #{uid};
     </select>
     <select id="listAllContest" resultType="com.ecin520.api.entity.Contest">

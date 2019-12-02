@@ -44,7 +44,7 @@ public interface QuestionDao {
      * @param typeName 题目类型
      * @return List<Question>
      * */
-    List<Question> getQuestionByTypeName(String typeName);
+    List<Question> getQuestionsByTypeName(String typeName);
 
     /**
      * 获得题目

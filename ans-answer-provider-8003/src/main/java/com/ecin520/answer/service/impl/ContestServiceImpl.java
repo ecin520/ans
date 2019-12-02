@@ -16,27 +16,28 @@ public class ContestServiceImpl implements ContestService {
 
     private ContestService contestService;
 
+    @Autowired
     public ContestServiceImpl(ContestService contestService) {
         this.contestService = contestService;
     }
 
     public Boolean insertContest(Contest contest) {
-        return insertContest(contest);
+        return contestService.insertContest(contest);
     }
 
     public Boolean updateContest(Contest contest) {
-        return updateContest(contest);
+        return contestService.updateContest(contest);
     }
 
-    public List<Contest> listContestByUserAId(Integer uid) {
-        return listContestByUserAId(uid);
+    public List<Contest> listContestByUserAid(Integer uid) {
+        return contestService.listContestByUserAid(uid);
     }
 
-    public List<Contest> listContestByUserBId(Integer uid) {
-        return listContestByUserBId(uid);
+    public List<Contest> listContestByUserBid(Integer uid) {
+        return contestService.listContestByUserBid(uid);
     }
 
     public List<Contest> listAllContest() {
-        return listAllContest();
+        return contestService.listAllContest();
     }
 }

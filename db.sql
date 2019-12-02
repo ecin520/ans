@@ -1,4 +1,3 @@
-
 -- 基本用户表
 CREATE TABLE `user` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -66,9 +65,6 @@ CREATE TABLE `friend` (
 );
 ALTER TABLE `friend` AUTO_INCREMENT = 100;
 
--- 查询某个id的所有好友
--- SELECT `nickname`, `username` FROM `user` WHERE `id` IN ( SELECT `oid` FROM `friend` WHERE `sid` = 100 );
-
 -- 好友验证表，
 CREATE TABLE `verification` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -87,16 +83,25 @@ CREATE TABLE `chat` (
 	`receive_id` INTEGER,
 	`content` VARCHAR ( 3600 ),
 	`read_status` INTEGER,
-	`time` VARCHAR ( 300 ),
-	FOREIGN KEY ( `send_id` ) REFERENCES `user` ( `id` )
+	`time` VARCHAR ( 300 )
 );
 ALTER TABLE `chat` AUTO_INCREMENT = 100;
+
+-- 类型表
+CREATE TABLE `type` (
+	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`type_name` VARCHAR(300),
+	`type_describe` VARCHAR(3600),
+	`hot` INTEGER,
+	`difficulty` INTEGER
+);
+ALTER TABLE `type` AUTO_INCREMENT = 100;
 
 -- 题目表
 CREATE TABLE `question` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`create_time` VARCHAR ( 300 ),
-	`question_type` VARCHAR ( 300 ),
+	`type_name` VARCHAR ( 300 ),
 	`question_owner` INTEGER,
 	`question_describe` VARCHAR ( 3600 ),
 	`question_explain` VARCHAR ( 3600 ),
@@ -104,8 +109,7 @@ CREATE TABLE `question` (
 	`item_b` VARCHAR ( 30 ),
 	`item_c` VARCHAR ( 30 ),
 	`item_d` VARCHAR ( 30 ),
-	`item_ans` VARCHAR ( 30 ),
-	FOREIGN KEY ( `question_owner` ) REFERENCES `user` ( `id` )
+	`item_ans` VARCHAR ( 30 )
 );
 ALTER TABLE `question` AUTO_INCREMENT = 100;
 
@@ -119,13 +123,18 @@ CREATE TABLE `contest` (
 ALTER TABLE `contest` AUTO_INCREMENT = 100;
 
 -- 比赛记录表
-CREATE TABLE `contest_recoder` (
+CREATE TABLE `contest_record` (
 	`id` INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`contest_id` INTEGER,
 	`question_id` INTEGER,
 	`win_id` INTEGER
 	);
 ALTER TABLE `contest_recoder` AUTO_INCREMENT = 100;
+
+
+
+
+
 
 
 -- 插入角色

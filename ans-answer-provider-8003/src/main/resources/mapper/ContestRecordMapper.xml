@@ -2,6 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ecin520.answer.dao.ContestRecordDao">
-
+    <insert id="insertContestRecord" parameterType="com.ecin520.api.entity.ContestRecord">
+        INSERT `contest_record`(`contest_id`, `question_id`, `win_id`) VALUES (#{contest_id}, #{question_id}, #{win_id});
+    </insert>
+    <select id="listContestRecordByContestId" parameterType="Integer" resultType="com.ecin520.api.entity.ContestRecord">
+        SELECT * FROM `contest_rocord` WHERE `contest_id` = #{contestId};
+    </select>
+    <select id="listContestRecordByQuestionId" parameterType="Integer" resultType="com.ecin520.api.entity.ContestRecord">
+        SELECT * FROM `contest_rocord` WHERE `question_id` = #{questionId};
+    </select>
 
 </mapper>
