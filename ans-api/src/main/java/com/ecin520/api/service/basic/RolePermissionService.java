@@ -33,7 +33,7 @@ public interface RolePermissionService {
      * @param id 用户ud
      * */
     @RequestMapping("/listPermissionsByUserId")
-    List<Permission> listRolesByUserId(@RequestParam("id") Integer id);
+    List<Permission> listPermissionsByUserId(@RequestParam("id") Integer id);
 
     /**
      * 通过角色id获取该角色所有权限

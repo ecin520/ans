@@ -1,10 +1,8 @@
-package com.ecin520.basic.controller;
+package com.ecin520.client.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ecin520.api.common.JsonObject;
 import com.ecin520.api.entity.Permission;
-import com.ecin520.api.entity.RolePermission;
-import com.ecin520.basic.service.RolePermissionService;
+import com.ecin520.api.service.basic.RolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,28 +11,19 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @Author: ecin520
- * @Date: 2019/11/30 10:04
+ * @author: ecin520
+ * @date: 2019/12/3 21:45
  */
 @RestController
-@RequestMapping("/rolePermission")
+@RequestMapping("/client/rolePermission")
 public class RolePermissionController {
 
 	@Autowired
 	private RolePermissionService rolePermissionService;
 
-	/**
-	 * 插入角色权限
-	 * @param rid 角色id
-	 * @param pid 权限id
-	 * */
 	@RequestMapping("/insertRolePermission")
 	public JSONObject insertRolePermission(@RequestParam("rid") Integer rid, @RequestParam("pid") Integer pid) {
-		if (rolePermissionService.insertRolePermission(rid, pid)) {
-			return JsonObject.backStatus(200, "授予角色权限成功！");
-		} else {
-			return JsonObject.backStatus(500, "授予角色权限失败！");
-		}
+		return rolePermissionService.insertRolePermission(rid, pid);
 	}
 
 	/**
@@ -43,11 +32,7 @@ public class RolePermissionController {
 	 * */
 	@RequestMapping("/deleteRolePermission")
 	public JSONObject deleteRolePermission(@RequestParam("id") Integer id) {
-		if (rolePermissionService.deleteRolePermissionById(id)) {
-			return JsonObject.backStatus(200, "删除用户角色成功！");
-		} else {
-			return JsonObject.backStatus(500, "删除用户角色失败！");
-		}
+		return rolePermissionService.deleteRolePermission(id);
 	}
 
 	/**
@@ -55,7 +40,7 @@ public class RolePermissionController {
 	 * @param id 用户ud
 	 * */
 	@RequestMapping("/listPermissionsByUserId")
-	public List<Permission> listPermissionsByUserId(@RequestParam("id") Integer id) {
+	public List<Permission> listRolesByUserId(@RequestParam("id") Integer id) {
 		return rolePermissionService.listPermissionsByUserId(id);
 	}
 
@@ -67,4 +52,6 @@ public class RolePermissionController {
 	public List<Permission> listPermissionsByRoleId(@RequestParam("rid") Integer rid) {
 		return rolePermissionService.listPermissionsByRoleId(rid);
 	}
+
+
 }
