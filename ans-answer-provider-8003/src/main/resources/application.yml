@@ -9,7 +9,7 @@ mybatis:
 # spring配置
 spring:
   application:
-    name: basic-provider
+    name: answer-provider
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.gjt.mm.mysql.Driver
@@ -24,7 +24,7 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
   instance:
     instance-id:
-      ans-basic-provider-8001
+      ans-answer-provider-8003
 
 # info服务信息配置
 info:

@@ -55,12 +55,12 @@ public class QuestionController {
 	}
 
 	@RequestMapping("/getQuestionsByTypeName")
-	List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName) {
+	public List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName) {
 		return questionService.getQuestionsByTypeName(typeName);
 	}
 
 	@RequestMapping("/getQuestionById")
-	Question getQuestionById(@RequestParam("id") Integer id) {
+	public Question getQuestionById(@RequestParam("id") Integer id) {
 		return questionService.getQuestionById(id);
 	}
 
