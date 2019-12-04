@@ -35,12 +35,12 @@ public class QuestionServiceImpl implements QuestionService {
         return questionDao.deleteQuestion(id);
     }
 
-    public List<Question> listAllQuestions() {
-        return questionDao.listAllQuestions();
+    public List<Question> listAllQuestions(Integer questionStatus) {
+        return questionDao.listAllQuestions(questionStatus);
     }
 
-    public List<Question> getQuestionsByTypeName(String typeName) {
-        return questionDao.getQuestionsByTypeName(typeName);
+    public List<Question> getQuestionsByTypeName(String typeName, Integer questionStatus) {
+        return questionDao.getQuestionsByTypeName(typeName, questionStatus);
     }
 
     public Question getQuestionById(Integer id) {

@@ -22,5 +22,6 @@ public class Question implements Serializable {
     private String item_c;
     private String item_d;
     private String item_ans;
+    private Integer question_status;
 
 }

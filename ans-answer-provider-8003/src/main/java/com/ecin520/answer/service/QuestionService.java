@@ -32,16 +32,18 @@ public interface QuestionService {
 
     /**
      * 列出所有题目
+     * @param questionStatus 题目状态
      * @return List<Question>
      * */
-    List<Question> listAllQuestions();
+    List<Question> listAllQuestions(Integer questionStatus);
 
     /**
      * 列出某一类型的题目
      * @param typeName 题目类型
+     * @param questionStatus 题目状态
      * @return List<Question>
      * */
-    List<Question> getQuestionsByTypeName(String typeName);
+    List<Question> getQuestionsByTypeName(String typeName, Integer questionStatus);
 
     /**
      * 获得题目
