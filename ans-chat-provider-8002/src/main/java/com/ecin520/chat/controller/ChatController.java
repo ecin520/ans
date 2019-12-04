@@ -79,8 +79,4 @@ public class ChatController {
 	public Chat getLatestChat(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
 		return chatService.getLatestChat(sendId, receiveId);
 	}
-
-
-
-
 }

@@ -51,7 +51,6 @@ public class Realm extends AuthorizingRealm {
 
 		User user = userService.getUserByUsername(username);
 
-
 		// 获取并添加该用户角色
 		List<Role> roleList = userRoleService.listRolesByUserId(user.getId());
 		for(Role role: roleList){

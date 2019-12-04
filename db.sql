@@ -109,7 +109,8 @@ CREATE TABLE `question` (
 	`item_b` VARCHAR ( 30 ),
 	`item_c` VARCHAR ( 30 ),
 	`item_d` VARCHAR ( 30 ),
-	`item_ans` VARCHAR ( 30 )
+	`item_ans` VARCHAR ( 30 ),
+	`question_status` INTEGER
 );
 ALTER TABLE `question` AUTO_INCREMENT = 100;
 
@@ -129,7 +130,7 @@ CREATE TABLE `contest_record` (
 	`question_id` INTEGER,
 	`win_id` INTEGER
 	);
-ALTER TABLE `contest_recoder` AUTO_INCREMENT = 100;
+ALTER TABLE `contest_record` AUTO_INCREMENT = 100;
 
 
 
