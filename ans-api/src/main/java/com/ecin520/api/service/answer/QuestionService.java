@@ -1,7 +1,6 @@
 package com.ecin520.api.service.answer;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ecin520.api.common.JsonObject;
 import com.ecin520.api.entity.Question;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -30,7 +29,10 @@ public interface QuestionService {
     JSONObject deleteQuestion(@RequestParam("id") Integer id);
 
     @RequestMapping("/getQuestionsByTypeName")
-    List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName);
+    List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName, @RequestParam("questionStatus") Integer questionStatus);
+
+    @RequestMapping("/listAllQuestions")
+    List<Question> listAllQuestions(@RequestParam("status") Integer status);
 
     @RequestMapping("/getQuestionById")
     Question getQuestionById(@RequestParam("id") Integer id);

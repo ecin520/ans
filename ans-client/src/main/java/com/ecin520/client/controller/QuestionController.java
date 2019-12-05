@@ -42,8 +42,13 @@ public class QuestionController {
 	}
 
 	@RequestMapping("/getQuestionsByTypeName")
-	public List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName) {
-		return questionService.getQuestionsByTypeName(typeName);
+	public List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName, @RequestParam("questionStatus") Integer questionStatus) {
+		return questionService.getQuestionsByTypeName(typeName, questionStatus);
+	}
+
+	@RequestMapping("/listAllQuestions")
+	public List<Question> listAllQuestions(@RequestParam("status") Integer status) {
+		return questionService.listAllQuestions(status);
 	}
 
 	@RequestMapping("/getQuestionById")

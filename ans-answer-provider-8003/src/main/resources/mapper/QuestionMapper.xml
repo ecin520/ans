@@ -27,8 +27,8 @@
         SELECT * FROM `question` WHERE `question_status` = #{questionStatus};
     </select>
 
-    <select id="getQuestionsByTypeName" parameterType="String" resultType="com.ecin520.api.entity.Question">
-        SELECT * FROM `question` WHERE `type_name` = #{typeName} AND `question_status` = #{questionStatus};
+    <select id="getQuestionsByTypeName" resultType="com.ecin520.api.entity.Question">
+        SELECT * FROM `question` WHERE `type_name` = #{arg0} AND `question_status` = #{arg1};
     </select>
 
     <select id="getQuestionById" parameterType="Integer" resultType="com.ecin520.api.entity.Question">

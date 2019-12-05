@@ -5,7 +5,6 @@ import com.ecin520.api.common.JsonObject;
 import com.ecin520.api.entity.User;
 import com.ecin520.api.service.basic.UserService;
 import com.ecin520.client.util.Encryption;
-import com.ecin520.client.util.FinalValue;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresRoles;
@@ -60,6 +59,16 @@ public class UserController {
         } else {
             return JsonObject.backStatus(500, "登陆失败！");
         }
+    }
+
+    /**
+     * 注销
+     * */
+    @RequestMapping("/logout")
+    public JSONObject logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return JsonObject.backStatus(200, "注销成功！");
     }
 
     /**

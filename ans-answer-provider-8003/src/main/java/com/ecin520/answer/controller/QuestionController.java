@@ -54,6 +54,14 @@ public class QuestionController {
 		}
 	}
 
+	/**
+	 * 根据题目状态列举该状态所有题目
+	 * */
+	@RequestMapping("/listAllQuestions")
+	public List<Question> listAllQuestions(@RequestParam("status") Integer status) {
+		return questionService.listAllQuestions(status);
+	}
+
 	@RequestMapping("/getQuestionsByTypeName")
 	public List<Question> getQuestionsByTypeName(@RequestParam("typeName") String typeName, @RequestParam("questionStatus") Integer questionStatus) {
 		return questionService.getQuestionsByTypeName(typeName, questionStatus);
