@@ -17,6 +17,6 @@ public class Chat implements Serializable {
     private Integer receive_id;
     private String content;
     private Integer read_status;
-    private String message_time;
+    private String time;
 
 }

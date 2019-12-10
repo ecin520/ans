@@ -35,4 +35,7 @@ public interface UserService {
 
     @RequestMapping("/getUserByUsername")
     User getUserByUsername(@RequestParam("username") String username);
+
+    @RequestMapping("/getUserById")
+    User getUserById(@RequestParam("id") Integer id);
 }

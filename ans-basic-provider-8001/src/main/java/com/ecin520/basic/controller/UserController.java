@@ -100,5 +100,13 @@ public class UserController {
 		return userService.getUserByUsername(username);
 	}
 
+	/**
+	 * 通过用户id获取用户信息
+	 * */
+	@RequestMapping("/getUserById")
+	public User getUserById(@RequestParam("id") Integer id) {
+		return userService.getUserById(id);
+	}
+
 
 }

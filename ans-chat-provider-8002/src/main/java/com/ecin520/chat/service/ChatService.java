@@ -2,6 +2,8 @@ package com.ecin520.chat.service;
 
 import com.ecin520.api.entity.Chat;
 import com.ecin520.api.entity.User;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,7 +24,8 @@ public interface ChatService {
 	 * 更新聊天，将状态更改为 1 ，表示已读
 	 * 3 ：未读
 	 * 1 ：已读
-	 * @param chat chat
+	 * @param sendId sendId
+	 * @param receiveId receiveId
 	 * @return Boolean
 	 * */
 	Boolean updateChat(Integer sendId, Integer receiveId);
@@ -33,6 +36,13 @@ public interface ChatService {
 	 * @return List<User>
 	 * */
 	List<User> listAllUsersByReceiveId(Integer receiveId);
+
+	/**
+	 * 通过自己的id获取已发送的列表
+	 * @param userId 自己的id
+	 * @return List<User>
+	 * */
+	List<User> listAllUsersBySelfSendId(@RequestParam("userId") Integer userId);
 
 	/**
 	 * 通过 send_id receive_id 获取相互之间的聊天记录

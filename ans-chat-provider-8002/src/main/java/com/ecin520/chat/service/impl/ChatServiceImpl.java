@@ -35,6 +35,10 @@ public class ChatServiceImpl implements ChatService {
 		return chatDao.listAllUsersByReceiveId(receiveId);
 	}
 
+	public List<User> listAllUsersBySelfSendId(Integer userId) {
+		return chatDao.listAllUsersBySelfSendId(userId);
+	}
+
 	public List<Chat> listChatRecode(Integer sendId, Integer receiveId) {
 		return chatDao.listChatRecode(sendId, receiveId);
 	}

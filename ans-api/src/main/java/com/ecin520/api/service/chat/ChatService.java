@@ -34,6 +34,9 @@ public interface ChatService {
     List<User> listAllUsersByReceiveId(@RequestParam("receiveId") Integer receiveId);
 
 
+    @RequestMapping("/listAllUsersBySendId")
+    List<User> listAllUsersBySelfSendId(@RequestParam("userId") Integer userId);
+
     /**
      * 查看指定用户的聊天记录
      * send_id 为自己 id receive_id 为对方 id 时获取的是自己给对方发送的消息

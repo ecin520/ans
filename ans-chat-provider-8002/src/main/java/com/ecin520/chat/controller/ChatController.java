@@ -50,6 +50,11 @@ public class ChatController {
 		return chatService.listAllUsersByReceiveId(receiveId);
 	}
 
+	@RequestMapping("/listAllUsersBySendId")
+	public List<User> listAllUsersBySelfSendId(@RequestParam("userId") Integer userId) {
+		return chatService.listAllUsersBySelfSendId(userId);
+	}
+
 
 	/**
 	 * 查看指定用户的聊天记录

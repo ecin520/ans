@@ -24,7 +24,8 @@ public interface ChatDao {
 	 * 更新聊天，将状态更改为 1 ，表示已读
 	 * 3 ：未读
 	 * 1 ：已读
-	 * @param chat chat
+	 * @param sendId sendId
+	 * @param receiveId receiveId
 	 * @return Boolean
 	 * */
 	Boolean updateChat(Integer sendId, Integer receiveId);
@@ -35,6 +36,13 @@ public interface ChatDao {
 	 * @return List<User>
 	 * */
 	List<User> listAllUsersByReceiveId(Integer receiveId);
+
+	/**
+	 * 通过自己的id获取已发送的列表
+	 * @param userId 自己的id
+	 * @return List<User>
+	 * */
+	List<User> listAllUsersBySelfSendId(Integer userId);
 
 	/**
 	 * 通过 send_id receive_id 获取相互之间的聊天记录

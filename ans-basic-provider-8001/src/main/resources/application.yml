@@ -31,3 +31,10 @@ info:
   app.name: find ans
   designer.name: ecin520
   designer.school: jxnu
+
+#security:
+#  basic:
+#    enabled: true
+#  user:
+#    name: ecin520
+#    password: qwer1234

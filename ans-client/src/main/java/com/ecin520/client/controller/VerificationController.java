@@ -2,7 +2,9 @@ package com.ecin520.client.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ecin520.api.entity.Friend;
+import com.ecin520.api.entity.User;
 import com.ecin520.api.entity.Verification;
+import com.ecin520.api.service.basic.UserService;
 import com.ecin520.api.service.chat.FriendService;
 import com.ecin520.api.service.chat.VerificationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,15 +24,19 @@ import java.util.List;
 @RequestMapping("/client/verification")
 public class VerificationController {
 
-	private VerificationService verificationService;
+	private final VerificationService verificationService;
 
-	private FriendService friendService;
+	private final FriendService friendService;
+
+	private final UserService userService;
 
 	@Autowired
-	public VerificationController(VerificationService verificationService, FriendService friendService) {
+	public VerificationController(VerificationService verificationService, FriendService friendService, UserService userService) {
 		this.verificationService = verificationService;
 		this.friendService = friendService;
+		this.userService = userService;
 	}
+
 
 	/**
 	 * 当用户点击添加好友后，将 send_id 和 receive_id 发送到后台，后台自动设定认证状态为 3（未验证）,
@@ -69,8 +76,18 @@ public class VerificationController {
 	 * @param id 用户的id
 	 */
 	@RequestMapping("/listUserUnverified")
-	public List<Verification> listUserUnverified(@RequestParam("id") Integer id) {
-		return verificationService.listUserUnverified(id);
+	public List<User> listUserUnverified(@RequestParam("id") Integer id) {
+
+		List<Verification> verificationList = verificationService.listUserUnverified(id);
+		List<User> userList = new ArrayList<>();
+
+		verificationList.forEach(verification -> {
+			User user = userService.getUserById(verification.getSend_id());
+			user.setPassword(null);
+			userList.add(user);
+		});
+
+		return userList;
 	}
 
 }

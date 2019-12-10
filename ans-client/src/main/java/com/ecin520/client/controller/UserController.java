@@ -99,4 +99,9 @@ public class UserController {
         return userService.getUserByUsername(username);
     }
 
+    @RequestMapping("/getUserById")
+    public User getUserById(@RequestParam("id") Integer id) {
+        return userService.getUserById(id);
+    }
+
 }
