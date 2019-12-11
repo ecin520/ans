@@ -53,6 +53,14 @@ public interface ChatDao {
 	List<Chat> listChatRecode(Integer sendId, Integer receiveId);
 
 	/**
+	 * 查看未读消息
+	 * @param sendId sendID
+	 * @param receiveId receiveID
+	 * @return Integer
+	 * */
+	Integer getUnReadCount(Integer sendId, Integer receiveId);
+
+	/**
 	 * 获取最新的消息记录，用于放在列表页面
 	 * @param sendId sendId
 	 * @param receiveId receiveId

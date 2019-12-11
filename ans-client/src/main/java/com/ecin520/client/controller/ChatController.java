@@ -59,9 +59,21 @@ public class ChatController {
 	 * @return List<Chat>
 	 * */
 	@RequestMapping("/listChatRecode")
-	public List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
-		return chatService.listChatRecode(sendId, receiveId);
+	public List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId, @RequestParam("role") String role) {
+		return chatService.listChatRecode(sendId, receiveId, role);
 	}
+
+	/**
+	 * 查看未读消息
+	 * @param sendId sendID
+	 * @param receiveId receiveID
+	 * @return Integer
+	 * */
+	@RequestMapping("/getUnReadCount")
+	public Integer getUnReadCount(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
+		return chatService.getUnReadCount(sendId, receiveId);
+	}
+
 
 	/**
 	 * 获取最新的消息记录，用于放在列表页面

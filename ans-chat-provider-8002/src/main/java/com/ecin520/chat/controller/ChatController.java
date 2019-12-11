@@ -66,11 +66,26 @@ public class ChatController {
 	 * @return List<Chat>
 	 * */
 	@RequestMapping("/listChatRecode")
-	public List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
-		// 更新消息的状态信息
-		chatService.updateChat(sendId, receiveId);
+	public List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId, @RequestParam("role") String role) {
+
+		// 更新消息的状态信息,如果是自己点进的消息列表，则更新
+		if ("self".equals(role)) {
+			chatService.updateChat(sendId, receiveId);
+		}
+
 		// 返回消息列表
 		return chatService.listChatRecode(sendId, receiveId);
+	}
+
+	/**
+	 * 查看未读消息
+	 * @param sendId sendID
+	 * @param receiveId receiveID
+	 * @return Integer
+	 * */
+	@RequestMapping("/getUnReadCount")
+	public Integer getUnReadCount(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
+		return chatService.getUnReadCount(sendId, receiveId);
 	}
 
 

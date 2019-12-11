@@ -43,6 +43,10 @@ public class ChatServiceImpl implements ChatService {
 		return chatDao.listChatRecode(sendId, receiveId);
 	}
 
+	public Integer getUnReadCount(Integer sendId, Integer receiveId) {
+		return chatDao.getUnReadCount(sendId, receiveId);
+	}
+
 	public Chat getLatestChat(Integer sendId, Integer receiveId) {
 		return chatDao.getLatestChat(sendId, receiveId);
 	}

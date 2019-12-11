@@ -20,4 +20,7 @@
     <select id="getLatestChat" parameterType="Integer" resultType="com.ecin520.api.entity.Chat">
         SELECT * FROM `chat`  WHERE `send_id` = #{arg0} AND `receive_id` = #{arg1} ORDER BY `time` DESC limit 1;
     </select>
+    <select id="getUnReadCount" parameterType="Integer" resultType="Integer">
+        SELECT count(*) FROM `chat` WHERE `send_id` = #{arg0} AND `receive_id` = #{arg1} AND `read_status` = 3;
+    </select>
 </mapper>

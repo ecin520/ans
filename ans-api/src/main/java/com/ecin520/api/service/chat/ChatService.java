@@ -47,8 +47,10 @@ public interface ChatService {
      * @return List<Chat>
      * */
     @RequestMapping("/listChatRecode")
-    List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId);
+    List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId, @RequestParam("role") String role);
 
+    @RequestMapping("/getUnReadCount")
+    Integer getUnReadCount(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId);
 
     /**
      * 获取最新的消息记录，用于放在列表页面
