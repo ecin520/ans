@@ -1,5 +1,6 @@
 package com.ecin520.client;
 
+import com.ecin520.client.server.ContestServer;
 import com.ecin520.client.server.NettyServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,11 +20,28 @@ public class ClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(ClientApplication.class, args);
         nettyServerStart();
+        contestServerStart();
     }
 
+    /**
+     * chat netty服务器
+     * port 8888
+     * */
     public static void nettyServerStart() {
         try {
             new NettyServer(8888).serverStart();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * contest netty 服务器
+     * port 9999
+     * */
+    public static void contestServerStart() {
+        try {
+            new ContestServer(9999).serverStart();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

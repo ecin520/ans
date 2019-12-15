@@ -13,6 +13,7 @@ public class Contest {
 	private Integer id;
 	private Integer user_a;
 	private Integer user_b;
+	private String contest_type;
 	private Integer win_id;
 	private String contest_time;
 }
