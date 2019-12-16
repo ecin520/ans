@@ -15,6 +15,7 @@
         <module>ans-chat-provider-8002</module>
         <module>ans-answer-provider-8003</module>
         <module>ans-client</module>
+        <module>ans-server</module>
     </modules>
 
     <packaging>pom</packaging>

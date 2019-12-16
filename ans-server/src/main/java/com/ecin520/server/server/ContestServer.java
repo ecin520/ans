@@ -1,4 +1,4 @@
-package com.ecin520.client.server;
+package com.ecin520.server.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
