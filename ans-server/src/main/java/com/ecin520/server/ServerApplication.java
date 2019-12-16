@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author ecin520
  * @Date: 2019/11/28 22:34
  */
-@SpringBootApplication(scanBasePackages = {"com.ecin520.api"})
+@SpringBootApplication(scanBasePackages = {"com.ecin520.server","com.ecin520.api"})
 @EnableEurekaClient
 @EnableFeignClients(basePackages = {"com.ecin520.api"})
 @EnableCaching

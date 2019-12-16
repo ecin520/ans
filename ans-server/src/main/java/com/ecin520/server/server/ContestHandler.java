@@ -74,7 +74,6 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
 	@Autowired
 	private QuestionService questionService;
 
-	private Boolean flag;
 
 	@PostConstruct
 	public void init() {
@@ -84,23 +83,22 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, TextWebSocketFrame tsf) throws Exception {
 
+
 		// 转化为json
 		JSONObject jsonObject = JSONObject.parseObject(tsf.text());
 
-		String name = (String) jsonObject.get("name");
+		String name = (String) jsonObject.getString("name");
 
 		// 发送者id
-		Integer sendId = (Integer) jsonObject.get("send_id");
+		String sendId = (String) jsonObject.getString("send_id");
 
 		switch (name) {
 			case "search opponent": {
 
+				String type = jsonObject.getString("type");
 
-				String type = (String) jsonObject.get("type");
-
-				userMap.put(sendId.toString(), ctx.channel().id());
-
-				flag = false;
+				userMap.put(sendId, ctx.channel().id());
+				boolean flag = false;
 
 				for (int i = 0; i < matchList.size(); i++) {
 					// 若Vector中存在待匹配的用户
@@ -111,32 +109,47 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
 
 						contest.setId(idAtom.addAndGet(1));
 						contest.setUser_a(matchList.get(i).getUserId());
-						contest.setUser_b(sendId);
+						contest.setUser_b(Integer.parseInt(sendId));
 						contest.setContest_type(type);
 
 						contestSet.add(contest);
 
-						List<Question> questions = questionService.getQuestionsByTypeName(type, 1);
+						List<Question> questions = contestHandler.questionService.getQuestionsByTypeName(type, 1);
+
+						questions.forEach(question -> {
+							System.out.println(question.toString());
+						});
 
 						List<Question> randQues = new ArrayList<>();
 
+						Collections.shuffle(questions);
 
 						// 添加五道题
 						for (int j = 0; j < 5; j++) {
-							randQues.add(questions.get(new Random().nextInt(questions.size())));
+							randQues.add(questions.get(j));
 						}
+
+						randQues.forEach(rand -> {
+							System.out.println(rand.toString());
+						});
 
 						JSONObject contestObj = new JSONObject();
 						contestObj.put("contest_id", idAtom.get());
+						contestObj.put("user_a", String.valueOf(matchList.get(i).getUserId()));
+						contestObj.put("user_b", sendId);
 						contestObj.put("questions", randQues);
-						ctx.writeAndFlush(contestObj.toJSONString());
+
+
+						contestGroup.find(userMap.get(String.valueOf(matchList.get(i).getUserId()))).writeAndFlush(new TextWebSocketFrame(contestObj.toJSONString()));
+						contestGroup.find(userMap.get(sendId)).writeAndFlush(new TextWebSocketFrame(contestObj.toJSONString()));
 
 						matchList.remove(matchList.get(i));
+						break;
 					}
 				}
 
 				if (!flag) {
-					matchList.addElement(new Match().setUserId(sendId).setType(type));
+					matchList.addElement(new Match().setUserId(Integer.parseInt(sendId)).setType(type));
 				}
 				break;
 			}
@@ -145,7 +158,7 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
 				String selectItem = (String) jsonObject.get("select_item");
 
 				contestSet.forEach(contest -> {
-					if (contest.getUser_a().equals(sendId.toString())) {
+					if (contest.getUser_a() == Integer.parseInt(sendId)) {
 
 						// 另一个客户端更新数据
 						contestGroup.find(userMap.get(contest.getUser_b())).writeAndFlush(new TextWebSocketFrame(selectItem));
