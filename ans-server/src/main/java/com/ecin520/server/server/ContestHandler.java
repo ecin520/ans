@@ -142,8 +142,9 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
                         contestObj.put("user_b", sendId);
                         contestObj.put("questions", randQues);
 
-
+                        contestObj.put("statistics", "true");
                         contestGroup.find(userMap.get(String.valueOf(matchList.get(i).getUserId()))).writeAndFlush(new TextWebSocketFrame(contestObj.toJSONString()));
+                        contestObj.put("statistics", "false");
                         contestGroup.find(userMap.get(sendId)).writeAndFlush(new TextWebSocketFrame(contestObj.toJSONString()));
 
                         matchList.remove(matchList.get(i));
@@ -161,11 +162,14 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
                 String selectItem = (String) jsonObject.get("select_item");
                 String opponentId = (String) jsonObject.get("opponentId");
                 String selfId = (String) jsonObject.get("sendId");
+                Integer score = (Integer) jsonObject.get("score");
 
                 JSONObject opponentObj = new JSONObject();
                 opponentObj.put("name", "matching");
                 opponentObj.put("select_item", selectItem);
                 opponentObj.put("sendId", selfId);
+                opponentObj.put("score", score);
+
 
                 contestGroup.find(userMap.get(opponentId)).writeAndFlush(new TextWebSocketFrame(opponentObj.toJSONString()));
 
