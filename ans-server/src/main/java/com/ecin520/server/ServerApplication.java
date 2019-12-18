@@ -11,25 +11,29 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author ecin520
  * @Date: 2019/11/28 22:34
  */
-@SpringBootApplication(scanBasePackages = {"com.ecin520.server","com.ecin520.api"})
+@SpringBootApplication(scanBasePackages = {"com.ecin520.server", "com.ecin520.api"})
 @EnableEurekaClient
 @EnableFeignClients(basePackages = {"com.ecin520.api"})
 @EnableCaching
 public class ServerApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
-        nettyServerStart();
-    }
 
-    /**
-     * chat netty服务器
-     * port 8888
-     * */
-    public static void nettyServerStart() {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ServerApplication.class, args);
+		nettyServerStart();
+	}
+
+	/**
+	 * chat netty服务器
+	 * port 8888
+	 */
+	public static void nettyServerStart() {
+		ContestServer contestServer = new ContestServer(9999);
         try {
-            new ContestServer(9999).serverStart();
+            contestServer.serverStart();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
 }
