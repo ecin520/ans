@@ -15,21 +15,20 @@ import java.util.List;
 @Service
 public class VerificationImpl implements VerificationService {
 
+	@Autowired
 	private VerificationDao verificationDao;
 
-	@Autowired
-	public VerificationImpl(VerificationDao verificationDao) {
-		this.verificationDao = verificationDao;
-	}
-
+	@Override
 	public Boolean insertVerification(Verification verification) {
 		return verificationDao.insertVerification(verification);
 	}
 
+	@Override
 	public Boolean updateVerificationsStatus(Verification verification) {
 		return verificationDao.updateVerificationsStatus(verification);
 	}
 
+	@Override
 	public List<Verification> listUserUnverified(Integer id) {
 		return verificationDao.listUserUnverified(id);
 	}

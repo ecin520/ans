@@ -18,18 +18,22 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Autowired
 	private UserRoleDao userRoleDao;
 
+	@Override
 	public Boolean insertUserRole(Integer uid, Integer rid) {
 		return userRoleDao.insertUserRole(uid, rid);
 	}
 
+	@Override
 	public Boolean updateUserRole(Integer uid, Integer rid) {
 		return userRoleDao.updateUserRole(uid, rid);
 	}
 
+	@Override
 	public Boolean deleteUserRoleById(Integer uid, Integer rid) {
 		return userRoleDao.deleteUserRoleById(uid, rid);
 	}
 
+	@Override
 	public List<Role> listRolesByUserId(Integer id) {
 		return userRoleDao.listRolesByUserId(id);
 	}

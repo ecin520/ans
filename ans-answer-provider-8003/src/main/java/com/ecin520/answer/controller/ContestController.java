@@ -61,7 +61,7 @@ public class ContestController {
     }
 
     @RequestMapping("/getMaxId")
-    public Integer getMaxId() {
+    public Integer getMaxId()  {
         return contestService.getMaxId();
     }
 

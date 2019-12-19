@@ -16,21 +16,20 @@ import java.util.List;
 @Service
 public class FriendServiceImpl implements FriendService {
 
+	@Autowired
 	private FriendDao friendDao;
 
-	@Autowired
-	public FriendServiceImpl(FriendDao friendDao) {
-		this.friendDao = friendDao;
-	}
-
+	@Override
 	public Boolean insertFriend(Friend friend) {
 		return friendDao.insertFriend(friend);
 	}
 
+	@Override
 	public Boolean deleteFriendByOid(Integer sid, Integer oid) {
 		return friendDao.deleteFriendByOid(sid, oid);
 	}
 
+	@Override
 	public List<User> listAllFriendsBySid(Integer sid) {
 		return friendDao.listAllFriendsBySid(sid);
 	}

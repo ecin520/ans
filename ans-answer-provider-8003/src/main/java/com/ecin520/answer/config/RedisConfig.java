@@ -78,20 +78,21 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory){
+
         // 生成一个默认配置
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
+
         // 设置缓存的默认过期时间且不缓存空值
         config = config.entryTtl(Duration.ofMinutes(1)).disableCachingNullValues();
 
         // 设置一个初始化的缓存空间set集合
         Set<String> cacheNames = new HashSet<>();
-        cacheNames.add("redis-cache1");
-        cacheNames.add("redis-cache2");
+        cacheNames.add("redis-cache");
 
         // 对每个缓存空间应用不同配置
         Map<String, RedisCacheConfiguration> configMap = new HashMap<>(2);
-        configMap.put("redis-cache1", config);
-        configMap.put("redis-cache2",config.entryTtl(Duration.ofSeconds(120)));
+        configMap.put("redis-cache", config);
+
 
         return RedisCacheManager.builder(redisConnectionFactory)
                 .initialCacheNames(cacheNames)

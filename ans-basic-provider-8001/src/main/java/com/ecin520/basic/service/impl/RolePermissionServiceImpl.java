@@ -18,22 +18,27 @@ public class RolePermissionServiceImpl implements RolePermissionService {
 	@Autowired
 	private RolePermissionDao rolePermissionDao;
 
+	@Override
 	public Boolean insertRolePermission(Integer rid, Integer pid) {
 		return rolePermissionDao.insertRolePermission(rid, pid);
 	}
 
+	@Override
 	public Boolean updateRolePermission(Integer rid, Integer pid) {
 		return rolePermissionDao.updateRolePermission(rid, pid);
 	}
 
+	@Override
 	public Boolean deleteRolePermissionById(Integer id) {
 		return rolePermissionDao.deleteRolePermissionById(id);
 	}
 
+	@Override
 	public List<Permission> listPermissionsByUserId(Integer id) {
 		return rolePermissionDao.listPermissionsByUserId(id);
 	}
 
+	@Override
 	public List<Permission> listPermissionsByRoleId(Integer rid) {
 		return rolePermissionDao.listPermissionsByRoleId(rid);
 	}

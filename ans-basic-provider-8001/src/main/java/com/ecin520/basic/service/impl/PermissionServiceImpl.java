@@ -18,22 +18,27 @@ public class PermissionServiceImpl implements PermissionService {
 	@Autowired
 	private PermissionDao permissionDao;
 
+	@Override
 	public Boolean insertPermission(Permission permission) {
 		return permissionDao.insertPermission(permission);
 	}
 
+	@Override
 	public Boolean updatePermission(Permission permission) {
 		return permissionDao.updatePermission(permission);
 	}
 
+	@Override
 	public Permission getPermissionById(Integer id) {
 		return permissionDao.getPermissionById(id);
 	}
 
+	@Override
 	public Boolean deletePermissionById(Integer id) {
 		return permissionDao.deletePermissionById(id);
 	}
 
+	@Override
 	public List<Permission> listAllPermissions() {
 		return permissionDao.listAllPermissions();
 	}

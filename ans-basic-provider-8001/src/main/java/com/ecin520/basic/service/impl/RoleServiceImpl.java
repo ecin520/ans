@@ -18,22 +18,27 @@ public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleDao roleDao;
 
+	@Override
 	public Boolean insertRole(Role role) {
 		return roleDao.insertRole(role);
 	}
 
+	@Override
 	public Boolean updateRole(Role role) {
 		return roleDao.updateRole(role);
 	}
 
+	@Override
 	public Role getRoleById(Integer id) {
 		return roleDao.getRoleById(id);
 	}
 
+	@Override
 	public Boolean deleteRoleById(Integer id) {
 		return roleDao.deleteRoleById(id);
 	}
 
+	@Override
 	public List<Role> listAllRoles() {
 		return roleDao.listAllRoles();
 	}

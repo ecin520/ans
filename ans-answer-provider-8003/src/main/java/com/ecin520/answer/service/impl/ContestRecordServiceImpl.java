@@ -19,14 +19,17 @@ public class ContestRecordServiceImpl implements ContestRecordService {
 	private ContestRecordDao contestRecordDao;
 
 
+	@Override
 	public Boolean insertContestRecord(ContestRecord contestRecord) {
 		return contestRecordDao.insertContestRecord(contestRecord);
 	}
 
+	@Override
 	public List<ContestRecord> listContestRecordByContestId(Integer contestId) {
 		return contestRecordDao.listContestRecordByContestId(contestId);
 	}
 
+	@Override
 	public List<ContestRecord> listContestRecordByQuestionId(Integer questionId) {
 		return contestRecordDao.listContestRecordByQuestionId(questionId);
 	}

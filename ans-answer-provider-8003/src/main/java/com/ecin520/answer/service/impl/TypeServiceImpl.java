@@ -18,18 +18,22 @@ public class TypeServiceImpl implements TypeService {
     @Autowired
     private TypeDao typeDao;
 
+    @Override
     public Boolean insertType(Type type) {
         return typeDao.insertType(type);
     }
 
+    @Override
     public Boolean updateType(Type type) {
         return typeDao.updateType(type);
     }
 
+    @Override
     public List<Type> listAllType() {
         return typeDao.listAllType();
     }
 
+    @Override
     public Type getTypeByTypeName(String typeName) {
         return typeDao.getTypeByTypeName(typeName);
     }

@@ -16,37 +16,40 @@ import java.util.List;
 @Service
 public class ChatServiceImpl implements ChatService {
 
-	private final ChatDao chatDao;
-
 	@Autowired
-	public ChatServiceImpl(ChatDao chatDao) {
-		this.chatDao = chatDao;
-	}
+	private ChatDao chatDao;
 
+	@Override
 	public Boolean insertChat(Chat chat) {
 		return chatDao.insertChat(chat);
 	}
 
+	@Override
 	public Boolean updateChat(Integer sendId, Integer receiveId) {
 		return chatDao.updateChat(sendId, receiveId);
 	}
 
+	@Override
 	public List<User> listAllUsersByReceiveId(Integer receiveId) {
 		return chatDao.listAllUsersByReceiveId(receiveId);
 	}
 
+	@Override
 	public List<User> listAllUsersBySelfSendId(Integer userId) {
 		return chatDao.listAllUsersBySelfSendId(userId);
 	}
 
+	@Override
 	public List<Chat> listChatRecode(Integer sendId, Integer receiveId) {
 		return chatDao.listChatRecode(sendId, receiveId);
 	}
 
+	@Override
 	public Integer getUnReadCount(Integer sendId, Integer receiveId) {
 		return chatDao.getUnReadCount(sendId, receiveId);
 	}
 
+	@Override
 	public Chat getLatestChat(Integer sendId, Integer receiveId) {
 		return chatDao.getLatestChat(sendId, receiveId);
 	}
