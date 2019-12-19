@@ -34,4 +34,7 @@ public interface ContestService {
 
     @RequestMapping("/listAllContests")
     List<Contest> listAllContests();
+
+    @RequestMapping("/getMaxId")
+    Integer getMaxId();
 }

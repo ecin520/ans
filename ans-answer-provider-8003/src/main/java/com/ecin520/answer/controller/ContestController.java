@@ -60,4 +60,9 @@ public class ContestController {
         return contestService.listAllContests();
     }
 
+    @RequestMapping("/getMaxId")
+    public Integer getMaxId() {
+        return contestService.getMaxId();
+    }
+
 }

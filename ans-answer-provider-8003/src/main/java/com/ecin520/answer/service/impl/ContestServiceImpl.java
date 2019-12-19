@@ -37,4 +37,8 @@ public class ContestServiceImpl implements ContestService {
     public List<Contest> listAllContests() {
         return contestDao.listAllContests();
     }
+
+    public Integer getMaxId() {
+        return contestDao.getMaxId();
+    }
 }

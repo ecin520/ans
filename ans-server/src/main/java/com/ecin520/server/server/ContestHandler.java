@@ -6,6 +6,7 @@ import com.ecin520.api.entity.ContestRecord;
 import com.ecin520.api.entity.Question;
 import com.ecin520.api.service.answer.ContestService;
 import com.ecin520.api.service.answer.QuestionService;
+import com.ecin520.server.ServerApplication;
 import com.ecin520.server.pojo.Match;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
@@ -31,6 +32,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Slf4j
 @Component
 public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
+
+    static {
+
+    }
 
     /**
      * 用来存放contest请求
@@ -83,7 +88,6 @@ public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFra
     @Override
     protected void channelRead0(ChannelHandlerContext ctx,
                                 TextWebSocketFrame tsf) throws Exception {
-
 
         // 转化为json
         JSONObject jsonObject = JSONObject.parseObject(tsf.text());

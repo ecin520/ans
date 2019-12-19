@@ -44,4 +44,10 @@ public interface ContestService {
      * @return List<Contest>
      * */
     List<Contest> listAllContests();
+
+    /**
+     * 获取最大Id
+     * @return Integer
+     * */
+    Integer getMaxId();
 }

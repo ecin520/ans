@@ -47,4 +47,10 @@ public interface ContestDao {
      * */
     List<Contest> listAllContests();
 
+    /**
+     * 获取最大Id
+     * @return Integer
+     * */
+    Integer getMaxId();
+
 }
