@@ -15,12 +15,8 @@ import java.util.List;
 @Service
 public class ContestServiceImpl implements ContestService {
 
+    @Autowired
     private ContestDao contestDao;
-
-    public ContestServiceImpl(ContestDao contestDao) {
-        this.contestDao = contestDao;
-    }
-
 
     public Boolean insertContest(Contest contest) {
         return contestDao.insertContest(contest);

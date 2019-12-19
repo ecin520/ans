@@ -15,12 +15,8 @@ import java.util.List;
 @Service
 public class TypeServiceImpl implements TypeService {
 
-    private TypeDao typeDao;
-
     @Autowired
-    public TypeServiceImpl(TypeDao typeDao) {
-        this.typeDao = typeDao;
-    }
+    private TypeDao typeDao;
 
     public Boolean insertType(Type type) {
         return typeDao.insertType(type);

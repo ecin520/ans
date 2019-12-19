@@ -3,6 +3,7 @@ package com.ecin520.api.entity;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
-public class RolePermission {
+public class RolePermission implements Serializable {
 	private Integer id;
 	private Role role;
 	private List<Permission> permissionList;

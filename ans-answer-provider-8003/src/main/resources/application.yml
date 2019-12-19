@@ -6,7 +6,9 @@ mybatis:
   type-aliases-package: com.ecin520.api.entity
   mapper-locations: classpath:mapper/*.xml
 
-# spring配置
+
+
+# spring配置druid数据源 redis缓存
 spring:
   application:
     name: answer-provider
@@ -16,6 +18,17 @@ spring:
     url: jdbc:mysql://localhost:3306/ans?useUnicode=true&characterEncoding=utf-8
     username: root
     password: qwer1234
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
 
 # Eureka配置，服务注册位置
 eureka:
@@ -31,3 +44,4 @@ info:
   app.name: answer module
   designer.name: ecin520
   designer.school: jxnu
+

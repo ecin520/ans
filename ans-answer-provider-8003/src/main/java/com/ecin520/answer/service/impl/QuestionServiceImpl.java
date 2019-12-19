@@ -15,13 +15,8 @@ import java.util.List;
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
-    private QuestionDao questionDao;
-
     @Autowired
-    public QuestionServiceImpl(QuestionDao questionDao) {
-        this.questionDao = questionDao;
-    }
-
+    private QuestionDao questionDao;
 
     public Boolean insertQuestion(Question question) {
         return questionDao.insertQuestion(question);
