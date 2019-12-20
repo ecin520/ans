@@ -12,7 +12,7 @@ public interface PermissionService {
 
 	Boolean insertPermission(Permission permission);
 
-	Boolean updatePermission(Permission permission);
+	Permission updatePermission(Permission permission);
 
 	Permission getPermissionById(Integer id);
 

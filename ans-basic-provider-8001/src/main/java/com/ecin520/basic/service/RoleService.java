@@ -12,7 +12,7 @@ public interface RoleService {
 
 	Boolean insertRole(Role role);
 
-	Boolean updateRole(Role role);
+	Role updateRole(Role role);
 
 	Role getRoleById(Integer id);
 

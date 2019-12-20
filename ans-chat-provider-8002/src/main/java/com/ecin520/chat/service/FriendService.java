@@ -15,7 +15,7 @@ public interface FriendService {
 	 * @param friend entity friend
 	 * @return Boolean
 	 * */
-	Boolean insertFriend(Friend friend);
+	List<User> insertFriend(Friend friend);
 
 	/**
 	 * delete friend by oid

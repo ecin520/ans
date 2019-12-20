@@ -1,6 +1,7 @@
 package com.ecin520.basic.service.impl;
 
 import com.ecin520.api.entity.Role;
+import com.ecin520.api.entity.UserRole;
 import com.ecin520.basic.dao.UserRoleDao;
 import com.ecin520.basic.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	@Override
-	public Boolean updateUserRole(Integer uid, Integer rid) {
-		return userRoleDao.updateUserRole(uid, rid);
+	public Boolean updateUserRole(UserRole userRole) {
+		return userRoleDao.updateUserRole(userRole);
 	}
 
 	@Override

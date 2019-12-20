@@ -5,6 +5,8 @@ import com.ecin520.api.entity.User;
 import com.ecin520.chat.dao.FriendDao;
 import com.ecin520.chat.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,16 +22,20 @@ public class FriendServiceImpl implements FriendService {
 	private FriendDao friendDao;
 
 	@Override
-	public Boolean insertFriend(Friend friend) {
-		return friendDao.insertFriend(friend);
+	@CachePut(value = "friend", key = "#friend.sid")
+	public List<User> insertFriend(Friend friend) {
+		friendDao.insertFriend(friend);
+		return friendDao.listAllFriendsBySid(friend.getSid());
 	}
 
 	@Override
+	@Cacheable(value = "friend", key = "#friend.sid")
 	public Boolean deleteFriendByOid(Integer sid, Integer oid) {
 		return friendDao.deleteFriendByOid(sid, oid);
 	}
 
 	@Override
+	@CachePut(value = "friend", key = "#friend.sid")
 	public List<User> listAllFriendsBySid(Integer sid) {
 		return friendDao.listAllFriendsBySid(sid);
 	}

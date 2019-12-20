@@ -22,37 +22,35 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    @CachePut(value = {"user"})
     public Boolean insertUser(User user) {
         return userDao.insertUser(user);
     }
 
     @Override
-    @Cacheable(value = {"user"}, key = "id" )
+    @Cacheable(value = {"user"}, key = "#id" )
     public User getUserById(Integer id) {
+        System.out.println("Mother fucker?");
         return userDao.getUserById(id);
     }
 
     @Override
-    @Cacheable(value = {"user"}, key = "username" )
     public User getUserByUsername(String username) {
         return userDao.getUserByUsername(username);
     }
 
     @Override
-    @Cacheable(value = {"user"})
     public List<User> listAllUsers() {
         return userDao.listAllUsers();
     }
 
     @Override
-    @CachePut(value = {"user"})
-    public Boolean updateUser(User user) {
-        return userDao.updateUser(user);
+    @CachePut(value = {"user"}, key = "#user.id")
+    public User updateUser(User user) {
+        return userDao.updateUser(user) ? user : null;
     }
 
     @Override
-    @CacheEvict(value = {"user"})
+    @CacheEvict(value = {"user"}, key = "#id")
     public Boolean deleteUserById(Integer id) {
         return userDao.deleteUserById(id);
     }

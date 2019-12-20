@@ -1,6 +1,7 @@
 package com.ecin520.basic.service;
 
 import com.ecin520.api.entity.Role;
+import com.ecin520.api.entity.UserRole;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface UserRoleService {
 
 	Boolean insertUserRole(Integer uid, Integer rid);
 
-	Boolean updateUserRole(Integer uid, Integer rid);
+	Boolean updateUserRole(UserRole userRole);
 
 	Boolean deleteUserRoleById(Integer uid, Integer rid);
 

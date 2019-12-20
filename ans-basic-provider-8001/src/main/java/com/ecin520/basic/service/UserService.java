@@ -1,7 +1,6 @@
 package com.ecin520.basic.service;
 
 import com.ecin520.api.entity.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -11,45 +10,51 @@ import java.util.List;
  */
 public interface UserService {
 
-    /**
-     * it triggers when user register the account
-     * @param user is the param by user to commit
-     * @return {true} if insert succcessfully, {false} when fail
-     * */
-    Boolean insertUser(User user);
+	/**
+	 * it triggers when user register the account
+	 *
+	 * @param user is the param by user to commit
+	 * @return {true} if insert succcessfully, {false} when fail
+	 */
+	Boolean insertUser(User user);
 
-    /**
-     * Querying user by id
-     * @param id user's id
-     * @return {user} when not null
-     * */
-    User getUserById(Integer id);
+	/**
+	 * Querying user by id
+	 *
+	 * @param id user's id
+	 * @return {user} when not null
+	 */
+	User getUserById(Integer id);
 
-    /**
-     * Querying user by username
-     * @param username user's id
-     * @return {user} when not null
-     * */
-    User getUserByUsername(String username);
+	/**
+	 * Querying user by username
+	 *
+	 * @param username user's id
+	 * @return {user} when not null
+	 */
+	User getUserByUsername(String username);
 
-    /**
-     * list all users
-     * @return List<Users>
-     * */
-    List<User> listAllUsers();
+	/**
+	 * list all users
+	 *
+	 * @return List<Users>
+	 */
+	List<User> listAllUsers();
 
-    /**
-     * update user's information
-     * @param user user
-     * @return true or false
-     * */
-    Boolean updateUser(User user);
+	/**
+	 * update user's information
+	 *
+	 * @param user user
+	 * @return true or false
+	 */
+	User updateUser(User user);
 
-    /**
-     * delete user by id
-     * @param id user's id
-     * @return true or false
-     * */
-    Boolean deleteUserById(Integer id);
+	/**
+	 * delete user by id
+	 *
+	 * @param id user's id
+	 * @return true or false
+	 */
+	Boolean deleteUserById(Integer id);
 
 }

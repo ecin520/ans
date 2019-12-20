@@ -4,6 +4,9 @@ import com.ecin520.api.entity.Permission;
 import com.ecin520.basic.dao.PermissionDao;
 import com.ecin520.basic.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,16 +27,19 @@ public class PermissionServiceImpl implements PermissionService {
 	}
 
 	@Override
-	public Boolean updatePermission(Permission permission) {
-		return permissionDao.updatePermission(permission);
+	@CachePut(value = {"permission"}, key = "#permission.id")
+	public Permission updatePermission(Permission permission) {
+		return permissionDao.updatePermission(permission) ? permission : null;
 	}
 
 	@Override
+	@Cacheable(value = {"permission"}, key = "#id")
 	public Permission getPermissionById(Integer id) {
 		return permissionDao.getPermissionById(id);
 	}
 
 	@Override
+	@CacheEvict(value = {"permission"}, key = "#id")
 	public Boolean deletePermissionById(Integer id) {
 		return permissionDao.deletePermissionById(id);
 	}

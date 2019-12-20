@@ -55,7 +55,7 @@ public class PermissionController {
 	 * */
 	@RequestMapping("/updatePermission")
 	public JSONObject updatePermission(@RequestBody Permission permission) {
-		if (permissionService.updatePermission(permission)) {
+		if (null != permissionService.updatePermission(permission)) {
 			return JsonObject.backStatus(200, "修改权限成功");
 		} else {
 			return JsonObject.backStatus(500, "修改权限失败！");

@@ -52,7 +52,7 @@ public class RoleController {
 	 * */
 	@RequestMapping("/updateRole")
 	public JSONObject updateRole(@RequestBody Role role) {
-		if (roleService.updateRole(role)) {
+		if (null != roleService.updateRole(role)) {
 			return JsonObject.backStatus(200, "修改成功");
 		} else {
 			return JsonObject.backStatus(500, "修改失败！");

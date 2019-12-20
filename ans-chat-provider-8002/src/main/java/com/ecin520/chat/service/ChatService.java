@@ -2,6 +2,7 @@ package com.ecin520.chat.service;
 
 import com.ecin520.api.entity.Chat;
 import com.ecin520.api.entity.User;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -35,6 +36,7 @@ public interface ChatService {
 	 * @param receiveId 也就是自己的id
 	 * @return List<User>
 	 * */
+
 	List<User> listAllUsersByReceiveId(Integer receiveId);
 
 	/**

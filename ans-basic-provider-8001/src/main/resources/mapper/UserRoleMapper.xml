@@ -7,8 +7,8 @@
         INSERT `user_role` (`uid`, `rid`) VALUES (#{arg0}, #{arg1});
     </insert>
 
-    <update id="updateUserRole" parameterType="Integer">
-        UPDATE `user_role` SET `uid` = #{uid}, `rid` = #{rid};
+    <update id="updateUserRole" parameterType="com.ecin520.api.entity.UserRole">
+        UPDATE `user_role` SET `uid` = #{uid}, `rid` = #{rid} WHERE `id` = #{id};
     </update>
 
     <delete id="deleteUserRoleById" parameterType="Integer">

@@ -4,6 +4,9 @@ import com.ecin520.api.entity.Role;
 import com.ecin520.basic.dao.RoleDao;
 import com.ecin520.basic.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,16 +27,19 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Boolean updateRole(Role role) {
-		return roleDao.updateRole(role);
+	@CachePut(value = "role", key = "#role.id")
+	public Role updateRole(Role role) {
+		return roleDao.updateRole(role) ? role : null;
 	}
 
 	@Override
+	@Cacheable(value = "role", key = "#id")
 	public Role getRoleById(Integer id) {
 		return roleDao.getRoleById(id);
 	}
 
 	@Override
+	@CacheEvict(value = "role", key = "#id")
 	public Boolean deleteRoleById(Integer id) {
 		return roleDao.deleteRoleById(id);
 	}

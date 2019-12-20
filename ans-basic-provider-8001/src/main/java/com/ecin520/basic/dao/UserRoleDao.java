@@ -15,7 +15,7 @@ public interface UserRoleDao {
 
 	Boolean insertUserRole(Integer uid, Integer rid);
 
-	Boolean updateUserRole(Integer uid, Integer rid);
+	Boolean updateUserRole(UserRole userRole);
 
 	Boolean deleteUserRoleById(Integer uid, Integer rid);
 

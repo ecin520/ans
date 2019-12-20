@@ -61,7 +61,7 @@ public class UserController {
 	* */
 	@RequestMapping("/updateUser")
 	public JSONObject updateUser(@RequestBody User user) {
-		if (userService.updateUser(user)) {
+		if (null != userService.updateUser(user)) {
 			return JsonObject.backStatus(200, "修改成功！");
 		} else {
 			return JsonObject.backStatus(500, user.getUsername() + "修改失败！");
@@ -79,8 +79,6 @@ public class UserController {
 			return JsonObject.backStatus(500, "删除失败！");
 		}
 	}
-
-
 
 	/**
 	 * 获取所有用户
