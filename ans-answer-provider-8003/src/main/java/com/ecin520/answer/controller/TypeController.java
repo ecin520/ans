@@ -28,7 +28,7 @@ public class TypeController {
 
     @RequestMapping("/insertType")
     public JSONObject insertType(@RequestBody Type type) {
-        if (typeService.insertType(type)) {
+        if (null != typeService.insertType(type)) {
             return JsonObject.backStatus(200, "插入题目类型成功！");
         } else {
             return JsonObject.backStatus(500, "插入题目类型失败！");
@@ -40,7 +40,7 @@ public class TypeController {
      * */
     @RequestMapping("/updateType")
     public JSONObject updateType(@RequestBody Type type) {
-        if (typeService.updateType(type)) {
+        if (null != typeService.updateType(type)) {
             return JsonObject.backStatus(200, "更新题目类型成功！");
         } else {
             return JsonObject.backStatus(500, "更新题目类型失败！");

@@ -5,6 +5,8 @@ import com.ecin520.api.entity.User;
 import com.ecin520.chat.dao.ChatDao;
 import com.ecin520.chat.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,13 +22,17 @@ public class ChatServiceImpl implements ChatService {
 	private ChatDao chatDao;
 
 	@Override
-	public Boolean insertChat(Chat chat) {
-		return chatDao.insertChat(chat);
+	@CachePut(value = "chat", key = "#chat.send_id + ':' + #chat.receive_id")
+	public List<Chat> insertChat(Chat chat) {
+		chatDao.insertChat(chat);
+		return chatDao.listChatRecode(chat.getSend_id(), chat.getReceive_id());
 	}
 
 	@Override
-	public Boolean updateChat(Integer sendId, Integer receiveId) {
-		return chatDao.updateChat(sendId, receiveId);
+	@CachePut(value = "chat", key = "#sendId + ':' + #receiveId")
+	public List<Chat> updateChat(Integer sendId, Integer receiveId) {
+		chatDao.updateChat(sendId, receiveId);
+		return chatDao.listChatRecode(sendId, receiveId);
 	}
 
 	@Override
@@ -40,6 +46,7 @@ public class ChatServiceImpl implements ChatService {
 	}
 
 	@Override
+	@Cacheable(value = "chat", key = "#sendId + ':' + #receiveId")
 	public List<Chat> listChatRecode(Integer sendId, Integer receiveId) {
 		return chatDao.listChatRecode(sendId, receiveId);
 	}

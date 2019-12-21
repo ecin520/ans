@@ -19,7 +19,7 @@ public interface ChatService {
 	 * @param chat 聊天信息
 	 * @return Boolean
 	 * */
-	Boolean insertChat(Chat chat);
+	List<Chat> insertChat(Chat chat);
 
 	/**
 	 * 更新聊天，将状态更改为 1 ，表示已读
@@ -29,7 +29,7 @@ public interface ChatService {
 	 * @param receiveId receiveId
 	 * @return Boolean
 	 * */
-	Boolean updateChat(Integer sendId, Integer receiveId);
+	List<Chat> updateChat(Integer sendId, Integer receiveId);
 
 	/**
 	 * 通过 receiveId 查找本用户所有的消息列表的用户，chat结构为{"send_id": *, "receive_id": *}

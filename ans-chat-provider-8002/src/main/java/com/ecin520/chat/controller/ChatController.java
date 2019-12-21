@@ -35,7 +35,7 @@ public class ChatController {
 	 * */
 	@RequestMapping("/insertChat")
 	public JSONObject insertChat(@RequestBody Chat chat) {
-		if (chatService.insertChat(chat)) {
+		if (null != chatService.insertChat(chat)) {
 			return JsonObject.backStatus(200, "发送成功！");
 		} else {
 			return JsonObject.backStatus(500, "发送失败！");

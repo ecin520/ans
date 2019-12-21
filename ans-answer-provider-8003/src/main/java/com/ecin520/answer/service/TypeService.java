@@ -15,14 +15,14 @@ public interface TypeService {
      * @param type 类型信息
      * @return Booelan
      * */
-    Boolean insertType(Type type);
+    List<Type> insertType(Type type);
 
     /**
      * 更新类型
      * @param type 类型信息
      * @return Booelan
      * */
-    Boolean updateType(Type type);
+    List<Type> updateType(Type type);
 
     /**
      * 获取所有的类型

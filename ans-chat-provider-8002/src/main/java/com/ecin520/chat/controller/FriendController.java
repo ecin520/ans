@@ -30,7 +30,7 @@ public class FriendController {
 
 	@RequestMapping("/insertFriend")
 	public JSONObject insertFriend(@RequestBody Friend friend) {
-		if (friendService.insertFriend(friend)) {
+		if (null != friendService.insertFriend(friend)) {
 			return JsonObject.backStatus(200, "添加好友成功！");
 		} else {
 			return JsonObject.backStatus(500, "添加好友失败！");

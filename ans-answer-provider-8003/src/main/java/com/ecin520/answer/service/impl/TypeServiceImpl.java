@@ -4,6 +4,8 @@ import com.ecin520.answer.dao.TypeDao;
 import com.ecin520.answer.service.TypeService;
 import com.ecin520.api.entity.Type;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,20 +17,29 @@ import java.util.List;
 @Service
 public class TypeServiceImpl implements TypeService {
 
+    private final TypeDao typeDao;
+
     @Autowired
-    private TypeDao typeDao;
-
-    @Override
-    public Boolean insertType(Type type) {
-        return typeDao.insertType(type);
+    public TypeServiceImpl(TypeDao typeDao) {
+        this.typeDao = typeDao;
     }
 
     @Override
-    public Boolean updateType(Type type) {
-        return typeDao.updateType(type);
+    @CachePut(value = "type", key = "'list-all-types'")
+    public List<Type> insertType(Type type) {
+        typeDao.insertType(type);
+        return typeDao.listAllType();
     }
 
     @Override
+    @CachePut(value = "type", key = "'list-all-types'")
+    public List<Type> updateType(Type type) {
+        typeDao.updateType(type);
+        return typeDao.listAllType();
+    }
+
+    @Override
+    @Cacheable(value = "type", key = "'list-all-types'")
     public List<Type> listAllType() {
         return typeDao.listAllType();
     }
