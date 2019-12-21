@@ -54,4 +54,9 @@ public class UserServiceImpl implements UserService {
     public Boolean deleteUserById(Integer id) {
         return userDao.deleteUserById(id);
     }
+
+    @Override
+    public Boolean addExperience(Integer userId, Integer rank) {
+        return userDao.addExperience(userId, rank);
+    }
 }

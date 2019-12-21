@@ -17,12 +17,13 @@ public class User implements Serializable {
     private String nickname;
     private String avatar_url;
     private String tel_number;
-    private String rank;
+    private Integer rank;
     private String sign;
     private Integer status;
     private Integer ans_number;
     private Integer correct_number;
     private String good_at;
     private String register_time;
+    private Integer devote_num;
 
 }

@@ -29,7 +29,8 @@ import java.util.Set;
  */
 @Configuration
 @EnableCaching
-public class RedisConfig extends CachingConfigurerSupport {
+public class
+RedisConfig extends CachingConfigurerSupport {
 
     /**生成key的策略 类名+方法名+所有参数值生成唯一的key*/
     @Override

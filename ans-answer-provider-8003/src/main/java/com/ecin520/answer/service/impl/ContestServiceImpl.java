@@ -47,4 +47,5 @@ public class ContestServiceImpl implements ContestService {
     public Integer getMaxId() {
         return contestDao.getMaxId();
     }
+
 }

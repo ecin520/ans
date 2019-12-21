@@ -65,4 +65,5 @@ public class ContestController {
         return contestService.getMaxId();
     }
 
+
 }

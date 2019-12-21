@@ -53,4 +53,5 @@ public interface ContestDao {
      * */
     Integer getMaxId();
 
+
 }

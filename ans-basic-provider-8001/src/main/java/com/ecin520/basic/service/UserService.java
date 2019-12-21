@@ -57,4 +57,12 @@ public interface UserService {
 	 */
 	Boolean deleteUserById(Integer id);
 
+	/**
+	 * 增加经验
+	 * @param userId userId
+	 * @param rank rank
+	 * @return Boolean
+	 * */
+	Boolean addExperience(Integer userId, Integer rank);
+
 }

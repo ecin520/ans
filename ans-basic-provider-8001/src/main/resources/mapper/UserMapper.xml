@@ -4,8 +4,8 @@
 <mapper namespace="com.ecin520.basic.dao.UserDao">
 
     <insert id="insertUser" parameterType="com.ecin520.api.entity.User">
-        INSERT `user` ( `username`, `password`, `nickname`, `avatar_url`, `tel_number`, `register_time`)
-            VALUES ( #{username}, #{password}, #{nickname}, #{avatar_url}, #{tel_number}, NOW());
+        INSERT `user` ( `username`, `password`, `nickname`, `avatar_url`, `tel_number`, `rank`, `register_time`)
+            VALUES ( #{username}, #{password}, #{nickname}, #{avatar_url}, #{tel_number}, 0, NOW());
     </insert>
 
     <update id="updateUser" parameterType="com.ecin520.api.entity.User">
@@ -29,5 +29,9 @@
     <select id="getUserByUsername" resultType="com.ecin520.api.entity.User">
         SELECT * FROM `user` WHERE `username` = #{username};
     </select>
+
+    <update id="addExperience" parameterType="Integer">
+        UPDATE `user` SET `rank` = #{param2} WHERE `id` = #{param1};
+    </update>
 
 </mapper>

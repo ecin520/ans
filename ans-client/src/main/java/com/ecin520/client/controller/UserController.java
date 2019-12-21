@@ -94,6 +94,17 @@ public class UserController {
         return userService.listAllUsers();
     }
 
+    @RequestMapping("/listUsersByNorPer")
+    public List<User> listUsersByDevote() {
+        List<User> userList = userService.listAllUsers();
+        for (int i = 0; i < userList.size(); i++) {
+            userList.get(i).setPassword(null);
+            userList.get(i).setStatus(null);
+            userList.get(i).setTel_number(null);
+        }
+        return userList;
+    }
+
     @RequestMapping("/getUserByUsername")
     public User getUserByUsername(@RequestParam("username") String username) {
         return userService.getUserByUsername(username);

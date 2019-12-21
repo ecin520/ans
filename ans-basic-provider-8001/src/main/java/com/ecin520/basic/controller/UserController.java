@@ -106,5 +106,18 @@ public class UserController {
 		return userService.getUserById(id);
 	}
 
+	@RequestMapping("/addExperience")
+	public JSONObject addExperience(@RequestParam("userId") Integer userId, @RequestParam("exp") Integer exp) {
+		User user = userService.getUserById(userId);
+
+		if (exp >  10) {
+			return JsonObject.backStatus(500, "请勿破坏游戏规则！违者封号！");
+		}
+		if (userService.addExperience(userId, user.getRank() + exp)) {
+			return JsonObject.backStatus(200, "添加经验成功！");
+		} else {
+			return JsonObject.backStatus(500, "添加经验失败！");
+		}
+	}
 
 }
