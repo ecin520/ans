@@ -1,6 +1,7 @@
 package com.ecin520.api.service.basic;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ecin520.api.common.JsonObject;
 import com.ecin520.api.entity.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -38,4 +39,7 @@ public interface UserService {
 
     @RequestMapping("/getUserById")
     User getUserById(@RequestParam("id") Integer id);
+
+    @RequestMapping("/addExperience")
+    JSONObject addExperience(@RequestParam("userId") Integer userId, @RequestParam("exp") Integer exp);
 }

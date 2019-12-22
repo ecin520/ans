@@ -2,6 +2,7 @@ package com.ecin520.basic.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ecin520.api.common.JsonObject;
+import com.ecin520.api.common.Level;
 import com.ecin520.api.common.RandomAvatar;
 import com.ecin520.api.common.RandomName;
 import com.ecin520.api.entity.User;
@@ -106,6 +107,9 @@ public class UserController {
 		return userService.getUserById(id);
 	}
 
+	/**
+	 * 增加经验
+	 * */
 	@RequestMapping("/addExperience")
 	public JSONObject addExperience(@RequestParam("userId") Integer userId, @RequestParam("exp") Integer exp) {
 		User user = userService.getUserById(userId);
@@ -118,6 +122,7 @@ public class UserController {
 		} else {
 			return JsonObject.backStatus(500, "添加经验失败！");
 		}
+
 	}
 
 }
