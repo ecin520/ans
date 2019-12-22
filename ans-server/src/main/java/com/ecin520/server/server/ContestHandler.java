@@ -33,19 +33,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 public class ContestHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
-    static {
-
-    }
-
     /**
      * 用来存放contest请求
      */
-    private static Vector<Match> matchList = new Vector<>();
+    private static Vector<Match> matchList = new Vector<>(18);
 
     /**
      * 线程安全的自增器
      */
-    public static AtomicInteger idAtom = new AtomicInteger(100);
+    private static AtomicInteger idAtom = new AtomicInteger(100);
 
     /**
      * 存储channel
