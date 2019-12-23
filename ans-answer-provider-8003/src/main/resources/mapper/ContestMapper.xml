@@ -4,7 +4,7 @@
 <mapper namespace="com.ecin520.answer.dao.ContestDao">
     <insert id="insertContest" parameterType="com.ecin520.api.entity.Contest">
         INSERT `contest`(`id`, `user_a`, `user_b`, `contest_type`, `win_id`, `contest_time`) VALUES (
-            #{id}, #{user_a}, #{user_b}, #{contest_type}, 0, NOW()
+            #{id}, #{user_a}, #{user_b}, #{contest_type}, #{win_id}, NOW()
         );
     </insert>
     <update id="updateContest" parameterType="com.ecin520.api.entity.Contest">

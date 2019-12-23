@@ -51,4 +51,11 @@ public interface QuestionService {
      * @return Question
      * */
     Question getQuestionById(Integer id);
+
+    /**
+     * 通过用户id获取所出题目
+     * @param owner user id
+     * @return List<Question>
+     * */
+    List<Question> listQuestionByOwnerId(Integer owner);
 }

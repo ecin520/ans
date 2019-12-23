@@ -47,6 +47,9 @@ public class QuestionController {
 
 	@RequestMapping("/deleteQuestion")
 	public JSONObject deleteQuestion(@RequestParam("id") Integer id) {
+
+
+
 		if (questionService.deleteQuestion(id)) {
 			return JsonObject.backStatus(200, "删除题目成功！");
 		} else {
@@ -71,6 +74,11 @@ public class QuestionController {
 	@RequestMapping("/getQuestionById")
 	public Question getQuestionById(@RequestParam("id") Integer id) {
 		return questionService.getQuestionById(id);
+	}
+
+	@RequestMapping("/listQuestionByOwnerId")
+	public List<Question> listQuestionByOwnerId(@RequestParam("owner") Integer owner) {
+		return questionService.listQuestionByOwnerId(owner);
 	}
 
 

@@ -5,11 +5,9 @@ import com.ecin520.api.common.JsonObject;
 import com.ecin520.api.entity.Friend;
 import com.ecin520.api.entity.User;
 import com.ecin520.api.service.chat.FriendService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,16 +23,22 @@ public class FriendController {
 	private FriendService friendService;
 
 	@RequestMapping("/insertFriend")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public JSONObject insertFriend(@RequestBody Friend friend) {
 		return friendService.insertFriend(friend);
 	}
 
 	@RequestMapping("/deleteFriend")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public JSONObject deleteFriend(@RequestParam("sid") Integer sid, @RequestParam("oid") Integer oid) {
 		return friendService.deleteFriend(sid, oid);
 	}
 
 	@RequestMapping("/listAllFriendsBySid")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public List<User> listAllFriendsBySid(@RequestParam("sid") Integer sid) {
 		return friendService.listAllFriendsBySid(sid);
 	}

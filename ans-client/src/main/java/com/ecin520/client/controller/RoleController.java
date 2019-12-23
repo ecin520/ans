@@ -5,10 +5,7 @@ import com.ecin520.api.entity.Role;
 import com.ecin520.api.service.basic.RoleService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,6 +27,8 @@ public class RoleController {
 	}
 
 	@RequestMapping("/listAllRoles")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public List<Role> listAllRoles() {
 		return roleService.listAllRoles();
 	}
@@ -41,6 +40,8 @@ public class RoleController {
 	}
 
 	@RequestMapping("/getRoleById")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public Role getRoleById(@RequestParam("id") Integer id) {
 		return roleService.getRoleById(id);
 	}

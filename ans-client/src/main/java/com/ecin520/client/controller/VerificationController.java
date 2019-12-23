@@ -7,11 +7,9 @@ import com.ecin520.api.entity.Verification;
 import com.ecin520.api.service.basic.UserService;
 import com.ecin520.api.service.chat.FriendService;
 import com.ecin520.api.service.chat.VerificationService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +43,8 @@ public class VerificationController {
 	 * 检查自己是否有人添加
 	 * */
 	@RequestMapping("/insertVerification")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public JSONObject insertVerification(@RequestBody Verification verification) {
 
 		// 将状态设置为未验证
@@ -59,6 +59,8 @@ public class VerificationController {
 	 * 前端数据要求 1 同意添加好友 2 不同意添加好友 3 未处理的验证
 	 * */
 	@RequestMapping("/updateVerificationsStatus")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public JSONObject updateVerificationsStatus(@RequestBody Verification verification) {
 
 		if ( 1 == verification.getVer_status() ) {
@@ -76,6 +78,8 @@ public class VerificationController {
 	 * @param id 用户的id
 	 */
 	@RequestMapping("/listUserUnverified")
+	@RequiresRoles("normal user")
+	@CrossOrigin
 	public List<User> listUserUnverified(@RequestParam("id") Integer id) {
 
 		List<Verification> verificationList = verificationService.listUserUnverified(id);

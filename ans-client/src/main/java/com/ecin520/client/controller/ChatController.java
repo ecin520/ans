@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.ecin520.api.entity.Chat;
 import com.ecin520.api.entity.User;
 import com.ecin520.api.service.chat.ChatService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class ChatController {
 	 * 数据发送到后端，保存到数据库保存记录，聊天记录可以通过 send_id 和 receive_id 对应的 content 来查看
 	 * */
 	@RequestMapping("/insertChat")
+	@RequiresRoles("normal user")
 	public JSONObject insertChat(@RequestBody Chat chat) {
 		return chatService.insertChat(chat);
 	}
@@ -39,11 +41,13 @@ public class ChatController {
 	 * 当用户进入 app 时，调用此接口，获取该用户所有的消息列表
 	 * */
 	@RequestMapping("/listAllUsersByReceiveId")
+	@RequiresRoles("normal user")
 	public List<User> listAllUsersByReceiveId(@RequestParam("receiveId") Integer receiveId) {
 		return chatService.listAllUsersByReceiveId(receiveId);
 	}
 
 	@RequestMapping("/listAllUsersBySendId")
+	@RequiresRoles("normal user")
 	public List<User> listAllUsersBySelfSendId(@RequestParam("userId") Integer userId) {
 		return chatService.listAllUsersBySelfSendId(userId);
 	}
@@ -58,6 +62,7 @@ public class ChatController {
 	 * @param sendId  sendId
 	 * @return List<Chat>
 	 * */
+	@RequiresRoles("normal user")
 	@RequestMapping("/listChatRecode")
 	public List<Chat> listChatRecode(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId, @RequestParam("role") String role) {
 		return chatService.listChatRecode(sendId, receiveId, role);
@@ -69,6 +74,7 @@ public class ChatController {
 	 * @param receiveId receiveID
 	 * @return Integer
 	 * */
+	@RequiresRoles("normal user")
 	@RequestMapping("/getUnReadCount")
 	public Integer getUnReadCount(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
 		return chatService.getUnReadCount(sendId, receiveId);
@@ -81,6 +87,7 @@ public class ChatController {
 	 * @param receiveId receiveId
 	 * @return Chat
 	 * */
+	@RequiresRoles("normal user")
 	@RequestMapping("/getLatestChat")
 	public Chat getLatestChat(@RequestParam("sendId") Integer sendId, @RequestParam("receiveId") Integer receiveId) {
 		// 获取对方发的最新聊天记录

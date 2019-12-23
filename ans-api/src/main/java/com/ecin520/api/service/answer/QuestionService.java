@@ -36,4 +36,7 @@ public interface QuestionService {
 
     @RequestMapping("/getQuestionById")
     Question getQuestionById(@RequestParam("id") Integer id);
+
+    @RequestMapping("/listQuestionByOwnerId")
+    public List<Question> listQuestionByOwnerId(@RequestParam("owner") Integer owner);
 }

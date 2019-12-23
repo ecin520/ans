@@ -33,10 +33,9 @@ public class ShiroConfig {
 		shiroFilterFactoryBean.setLoginUrl("/unauth");
 		shiroFilterFactoryBean.setUnauthorizedUrl("/unauth");
 		Map<String,String> map = new LinkedHashMap<>();
-		map.put("/login","anon");
+		map.put("/client/user/login","anon");
 		map.put("/register", "anon");
-		// map.put("/perms","perms[vip2]");
-		map.put("/*","authc");
+		map.put("/**","authc");
 		shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
 
 		return shiroFilterFactoryBean;
@@ -59,7 +58,7 @@ public class ShiroConfig {
 		RedisManager manager = new RedisManager();
 		manager.setHost("127.0.0.1");
 		manager.setPort(6379);
-		manager.setExpire(1800);
+//		manager.setExpire(1800);
 		return manager;
 	}
 
@@ -131,7 +130,7 @@ public class ShiroConfig {
 	@Bean
 	public SimpleCookie simpleCookie(){
 		SimpleCookie cookie = new SimpleCookie("rememberMe");
-		cookie.setMaxAge(60*60*24);
+//		cookie.setMaxAge(60*60*24);
 		return cookie;
 	}
 

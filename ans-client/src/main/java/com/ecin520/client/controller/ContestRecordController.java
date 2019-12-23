@@ -3,11 +3,9 @@ package com.ecin520.client.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.ecin520.api.entity.ContestRecord;
 import com.ecin520.api.service.answer.ContestRecordService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,16 +25,22 @@ public class ContestRecordController {
     }
 
     @RequestMapping("/insertContestRecord")
+    @RequiresRoles("normal user")
+    @CrossOrigin
     public JSONObject insertContestRecord(@RequestBody ContestRecord contestRecord) {
         return contestRecordService.insertContestRecord(contestRecord);
     }
 
     @RequestMapping("/listContestRecordByContestId")
+    @RequiresRoles("normal user")
+    @CrossOrigin
     public List<ContestRecord> listContestRecordByContestId(@RequestParam("contestId") Integer contestId) {
         return contestRecordService.listContestRecordByContestId(contestId);
     }
 
     @RequestMapping("/listContestRecordByQuestionId")
+    @RequiresRoles("normal user")
+    @CrossOrigin
     public List<ContestRecord> listContestRecordByQuestionId(@RequestParam("questionId") Integer questionId) {
         return contestRecordService.listContestRecordByQuestionId(questionId);
     }

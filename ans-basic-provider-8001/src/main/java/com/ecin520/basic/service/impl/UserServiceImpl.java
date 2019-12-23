@@ -27,9 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Cacheable(value = {"user"}, key = "#id" )
     public User getUserById(Integer id) {
-        System.out.println("Mother fucker?");
         return userDao.getUserById(id);
     }
 
@@ -44,13 +42,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @CachePut(value = {"user"}, key = "#user.id")
     public User updateUser(User user) {
         return userDao.updateUser(user) ? user : null;
     }
 
     @Override
-    @CacheEvict(value = {"user"}, key = "#id")
     public Boolean deleteUserById(Integer id) {
         return userDao.deleteUserById(id);
     }

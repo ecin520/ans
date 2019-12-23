@@ -14,6 +14,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.HashSet;
 import java.util.List;
@@ -28,12 +29,15 @@ public class Realm extends AuthorizingRealm {
 
 
 	@Autowired
+	@Lazy
 	private UserService userService;
 
 	@Autowired
+	@Lazy
 	private UserRoleService userRoleService;
 
 	@Autowired
+	@Lazy
 	private RolePermissionService rolePermissionService;
 
 	/**
@@ -48,6 +52,8 @@ public class Realm extends AuthorizingRealm {
 		// 将该用户角色与权限放入set中，执行授权逻辑
 		Set<String> roles = new HashSet<>();
 		Set<String> permissions = new HashSet<>();
+
+
 
 		User user = userService.getUserByUsername(username);
 
@@ -65,6 +71,11 @@ public class Realm extends AuthorizingRealm {
 
 		authorizationInfo.addRoles(roles);
 		authorizationInfo.addStringPermissions(permissions);
+
+		System.out.println(username);
+		roles.forEach(System.out::println);
+		System.out.println(username);
+		permissions.forEach(System.out::println);
 
 		return authorizationInfo;
 	}

@@ -47,4 +47,9 @@ public class QuestionServiceImpl implements QuestionService {
     public Question getQuestionById(Integer id) {
         return questionDao.getQuestionById(id);
     }
+
+    @Override
+    public List<Question> listQuestionByOwnerId(Integer owner) {
+        return questionDao.listQuestionByOwnerId(owner);
+    }
 }

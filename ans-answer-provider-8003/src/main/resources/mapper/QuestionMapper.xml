@@ -34,4 +34,8 @@
     <select id="getQuestionById" parameterType="Integer" resultType="com.ecin520.api.entity.Question">
         SELECT * FORM `question` WHERE `id` = #{id};
     </select>
+
+    <select id="listQuestionByOwnerId" parameterType="Integer" resultType="com.ecin520.api.entity.Question">
+        SELECT * FROM `question` WHERE `question_owner` = #{owner};
+    </select>
 </mapper>
